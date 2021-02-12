@@ -26,6 +26,17 @@ time, mark, audio, video {
     font-family: 'Noto Sans KR', 'Sans-serif', sans-serif;
 }
 
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    background: #f1f1f1;
+    line-height: 1.2;
+    letter-spacing: -0.02ch;
+}
+
 .p25 {
     display: inline-block;
     vertical-align: top;
@@ -63,7 +74,6 @@ table th {
     background: #b60005;
     color: #fff;
 }
-
 
 
 /*
@@ -228,3 +238,83 @@ div.first_paragraph > .p75 {
     }
 }
 
+/*
+    footer
+*/
+
+div.footer {
+    margin-top: 32px;
+    padding: 64px 64px;
+    font-size: .9rem;
+    background: #b60005;
+    color: #fff;
+}
+
+div.footer *::selection {
+    background: rgba(255, 255, 255, 0.5);
+    color: #fff;
+}
+
+div.footer div.footer_item_container {
+    font-size: 0;
+}
+
+div.footer div.footer_item {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    line-height: 1.7;
+}
+
+div.footer_item > div {
+    padding-bottom: 16px;
+}
+
+div.footer_item a {
+    color: inherit;
+}
+
+div.footer_item div.left, div.footer_item div.right {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    font-size: .8rem;
+    padding-right: 16px;
+}
+
+div.footer_item div.left {
+    font-weight: bold;
+}
+
+div.footer_desc {
+    position: relative;
+    color: #fff;
+    line-height: 36px;
+    margin-top: 32px;
+}
+
+div.footer_desc ul {
+    display: inline-block;
+}
+
+div.footer_desc span.copyright {
+    display: inline-block;
+    padding-right: 18px;
+    font-size: .8rem;
+}
+
+div.footer_desc li {
+    display: inline-block;
+    padding-right: 18px;
+    font-weight: bold;
+    font-size: .8rem;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+div.footer_desc li a {
+    color: inherit;
+}
