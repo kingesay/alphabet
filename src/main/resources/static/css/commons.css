@@ -215,7 +215,7 @@ div.contents_container {
     position: relative;
     background: #fff;
     width: 100%;
-    max-width: 1600px;
+    max-width: 100%;
 }
 
 div.contents {

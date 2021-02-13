@@ -1,6 +1,13 @@
 package uhs.alphabet.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 
 @Controller
@@ -26,5 +33,9 @@ public class IndexController {
     }
 
     @GetMapping("/api/getSVG")
-    public String getSVG() {return "http://www.uhs-alphabet.com/img/abcblock.svg"; }
+    public ModelAndView getSVG() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("redirect:/img/abcblock.svg");
+        return mv;
+    }
 }
