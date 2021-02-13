@@ -24,4 +24,7 @@ public class IndexController {
     public String contact() {
         return "contact";
     }
+
+    @GetMapping("/api/getSVG")
+    public String getSVG() {return "/img/abcblock.svg"; }
 }
