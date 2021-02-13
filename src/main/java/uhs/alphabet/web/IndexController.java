@@ -26,5 +26,5 @@ public class IndexController {
     }
 
     @GetMapping("/api/getSVG")
-    public String getSVG() {return "/img/abcblock.svg"; }
+    public String getSVG() {return "http://www.uhs-alphabet.com/img/abcblock.svg"; }
 }
