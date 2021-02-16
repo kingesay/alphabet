@@ -44,7 +44,7 @@ public class IndexController {
 //        mv.addObject("id", "stuId");
 //        mv.setViewName("index");
 //        mv.setViewName("redirect:/img/abcblock.svg");
-        return "<svg id=\"Capa_1\" enable-background=\"new 0 0 512 512\" height=\"512\" viewBox=\"0 0 512 512\" width=\"512\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
+        return "<svg id=\"Capa_1\" enable-background=\"new 0 0 512 512\" height=\"151\" viewBox=\"0 0 512 512\" width=\"350\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
                 "    <text x=\"200\" y=\"40\" class=\"small\">alphabet</text>\n" +
                 "    <text x=\"200\" y=\"180\" class=\"small\">"+s+"</text>\n" +
                 "    <path d=\"m256.531 221.951c-4.142 0-7.5 3.358-7.5 7.5v12.794l-4.64-4.781c-2.885-2.972-7.633-3.043-10.605-.158s-3.043 7.633-.158 10.605l17.522 18.053c1.413 1.456 3.354 2.276 5.382 2.276h.058c2.047-.016 4-.868 5.404-2.36l16.992-18.053c2.839-3.016 2.694-7.763-.321-10.602-3.016-2.838-7.761-2.696-10.603.321l-4.029 4.281v-12.378c-.002-4.14-3.36-7.498-7.502-7.498z\"/>\n" +
