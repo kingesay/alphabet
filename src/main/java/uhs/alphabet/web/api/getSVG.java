@@ -13,7 +13,7 @@ public class getSVG {
 
     private String url;
 
-    public getSVG() {
+    public getSVG(String stuID) {
 
     }
 }
