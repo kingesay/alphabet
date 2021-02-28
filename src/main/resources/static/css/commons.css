@@ -241,6 +241,16 @@ div.pad {
     padding: 0 64px;
 }
 
+.p25_main {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1rem;
+    width: 25%;
+    height:100%;
+    padding-right: 16px;
+    z-index: 2;
+}
+
 div.main_title {
     font-size: 4rem;
     font-weight: bold;
