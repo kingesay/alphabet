@@ -61,6 +61,7 @@ public class IndexController {
             mem.put(20180647, "BueVonHun");
             mem.put(20150823, "Hello_miz");
             mem.put(20160825, "ParkCH");
+            mem.put(20160842, "Hello_JSM");
             String handle = "None";
             if (mem.containsKey(stuID)) {
                 handle = mem.get(stuID);
