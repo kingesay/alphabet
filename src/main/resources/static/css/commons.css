@@ -8,7 +8,7 @@
     --LogoHight: 40px;
     --NavFontsize: 30px;
     --NavHeight: 50px; /* fontsize+paddingtop */
-    --PaddingTomContent: 70px; /* NavHeight+paddingtop */
+    --PaddingContent: 70px; /* NavHeight+paddingtop */
     --HalfNavHeight: 25px;
     --HalfItemHeight: 35px;
     --HalfLogoHight: 20px;
@@ -50,9 +50,8 @@ ul {
 }
 ul li{
     list-style-type:none;
-    margin-left: 70px;
+    margin-left: 90px;
     display: inline-block;
-    padding-bottom: 15px;
 }
 
 a {
@@ -69,7 +68,7 @@ a {
     background: black;
     opacity: 0.9;
     position: fixed;
-    padding-top: 20px;
+    padding: 10px;
     height: var(--NavHeight);
     width: 100%;
 }
@@ -100,11 +99,11 @@ a {
 */
 
 .contents {
-    padding-top: var(--PaddingTomContent);
+    padding: var(--PaddingContent);
     alignment: center;
     width: 100%;
     height: auto;
-    padding-left: 20%;
+    /*padding-left: 20%;*/
 }
 
 div.items {
@@ -165,16 +164,21 @@ div.items {
         height: var(--HalfNavHeight);
     }
     .nav_item {
-        font-size: var(--HalfNavFontsize);
+        font-size: 1.5em;
     }
     .logo {
-        height: var(--HalfLogoHight);
+        /*height: var(--HalfLogoHight);*/
+        height: 1.5em;
     }
     .item_img {
         height: var(--HalfItemHeight);
     }
     .item_text {
         height: var(--HalfItemHeight);
+    }
+    .contents {
+        padding: 20px;
+        font-size: 1.5em;
     }
 }
 
