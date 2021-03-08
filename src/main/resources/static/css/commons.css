@@ -50,8 +50,9 @@ ul {
 }
 ul li{
     list-style-type:none;
-    margin-left: 90px;
+    /*margin-left: 90px;*/
     display: inline-block;
+    padding: 0em 2em 0em 2em;
 }
 
 a {
@@ -149,15 +150,15 @@ div.items {
 
 @media only screen and (max-width: 768px) {
     footer {
-        height: 50px;
+        height: 4em;
     }
     .foot_text {
         color: gray;
-        font-size: 10px;
+        font-size: 0.7em;
     }
 
     .foot_license {
-        font-size: 10px;
+        font-size: 0.7em;
         color: white;
     }
     .navigation {
@@ -177,7 +178,7 @@ div.items {
         height: var(--HalfItemHeight);
     }
     .contents {
-        padding: 20px;
+        padding: 1em;
         font-size: 1.5em;
     }
 }
