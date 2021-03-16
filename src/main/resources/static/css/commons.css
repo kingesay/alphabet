@@ -39,7 +39,7 @@ body {
 footer {
     opacity: 0.8;
     background: black;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     height: 100px;
@@ -102,7 +102,7 @@ a {
 .contents {
     padding: var(--PaddingContent);
     alignment: center;
-    width: 100%;
+    width: auto; /*이렇게 해야 너비가 딱 맞게 나옴*/
     height: auto;
     /*padding-left: 20%;*/
 }
