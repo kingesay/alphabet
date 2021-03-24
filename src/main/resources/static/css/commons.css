@@ -133,6 +133,18 @@ div.items {
     font-size: 50px;
 }
 
+table{
+    width:100%;
+}
+th{
+    text-align:left;
+    font-size:30px;
+    padding-top:50px;
+}
+td.name{
+    width:15%;
+}
+
 /*
     footer
 */
