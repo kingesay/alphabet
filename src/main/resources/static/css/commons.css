@@ -9,6 +9,7 @@
     --NavFontsize: 30px;
     --NavHeight: 50px; /* fontsize+paddingtop */
     --PaddingContent: 70px; /* NavHeight+paddingtop */
+
     --HalfNavHeight: 25px;
     --HalfItemHeight: 35px;
     --HalfLogoHight: 20px;
@@ -105,6 +106,13 @@ a {
     width: auto; /*이렇게 해야 너비가 딱 맞게 나옴*/
     height: auto;
     /*padding-left: 20%;*/
+
+    /*스크롤바 투명으로 만들기*/
+    -ms-overflow-style: none;
+}
+/*스크롤바 투명으로 만들기*/
+.contents::-webkit-scrollbar {
+    display: none;
 }
 
 div.items {
@@ -165,7 +173,7 @@ td.name{
 
 @media only screen and (max-width: 768px) {
     footer {
-        height: 4em;
+        height: auto;
     }
     .foot_text {
         color: gray;
@@ -180,11 +188,11 @@ td.name{
         height: var(--HalfNavHeight);
     }
     .nav_item {
-        font-size: 1.5em;
+        font-size: 1.0em;
     }
     .logo {
         /*height: var(--HalfLogoHight);*/
-        height: 1.5em;
+        height: 1.0em;
     }
     .item_img {
         height: var(--HalfItemHeight);
