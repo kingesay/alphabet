@@ -104,7 +104,7 @@ a {
     padding: var(--PaddingContent);
     alignment: center;
     width: auto; /*이렇게 해야 너비가 딱 맞게 나옴*/
-    height: 530px;
+    height: 33rem;
     overflow: scroll;
     /*padding-left: 20%;*/
 
