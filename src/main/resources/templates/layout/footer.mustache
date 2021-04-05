@@ -1,5 +1,6 @@
 
 </body>
+<div style="clear: both"></div>
 <footer class="footer">
         <section class="foot_text">
             <p>주소: 경기도 화성시 봉담읍 최루백로 72 협성대학교</p>
@@ -13,4 +14,21 @@
             <p>Copyright 2021. 김태훈 all rights reserved.</p>
         </section>
 </footer>
+
+<script>
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}
+        x[myIndex-1].style.display = "block";
+        setTimeout(carousel, 2500);
+    }
+</script>
 </html>
