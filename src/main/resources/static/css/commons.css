@@ -33,12 +33,8 @@ nav, section, main {
     display: block;
 }
 
-body {
-    /*padding-bottom: 100px;*/
-}
-
-footer {
-    opacity: 0.8;
+.foot {
+    opacity: 1;
     background: black;
     position: fixed;
     bottom: 0;
@@ -68,7 +64,7 @@ a {
 
 .navigation {
     background: black;
-    opacity: 0.9;
+    opacity: 1;
     position: fixed;
     padding: 10px;
     height: var(--NavHeight);
@@ -104,14 +100,13 @@ a {
     padding: var(--PaddingContent);
     alignment: center;
     width: auto; /*이렇게 해야 너비가 딱 맞게 나옴*/
-    height: 33rem;
+    height: 800px;
     overflow: scroll;
-    /*padding-left: 20%;*/
-
     /*스크롤바 투명으로 만들기*/
     -ms-overflow-style: none;
+    /*padding-left: 20%;*/
 }
-/*스크롤바 투명으로 만들기*/
+스크롤바 투명으로 만들기
 .contents::-webkit-scrollbar {
     display: none;
 }
@@ -121,10 +116,6 @@ div.items {
     width: 100%;
     height: auto;
     float: left;
-}
-
-.items.slide {
-
 }
 
 .item_img {
@@ -179,7 +170,7 @@ td.name{
 */
 
 @media only screen and (max-width: 768px) {
-    footer {
+    .foot {
         height: auto;
     }
     .foot_text {

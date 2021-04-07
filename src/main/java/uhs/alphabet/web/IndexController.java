@@ -42,6 +42,7 @@ public class IndexController {
             BufferedReader br = null;
             HashMap<Integer, String> mem = new HashMap<Integer, String>();
             try {
+//                TODO: 파일 위치 변수에 넣기
                 br = new BufferedReader(new FileReader("/home/ec2-user/app/step2/stuList/in.txt"));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
