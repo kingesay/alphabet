@@ -1,7 +1,12 @@
 /*
     init
 */
-
+backward {
+    display: inline-block;
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+}
 :root {
     --ItemHeight: 70px;
     --ItemTextSZ: 50px;

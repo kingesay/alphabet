@@ -34,6 +34,9 @@ public class IndexController {
         return "contact";
     }
 
+    @GetMapping("/mirror")
+    public String mirror() { return "mirror"; }
+
     @RestController
     public class apiControl {
         @RequestMapping(value = "/api/getSVG", method = RequestMethod.GET, produces = "image/svg+xml", params = "stuID")
