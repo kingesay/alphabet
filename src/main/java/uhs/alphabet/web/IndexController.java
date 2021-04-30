@@ -16,7 +16,7 @@ import java.io.*;
 import java.util.*;
 
 @RequiredArgsConstructor
-@RestController
+@Controller
 public class IndexController {
 
     private final PersonService personService;
