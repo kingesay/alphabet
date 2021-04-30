@@ -1,4 +1,5 @@
 package uhs.alphabet.web;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,8 +15,8 @@ import uhs.alphabet.domain.service.PersonService;
 import java.io.*;
 import java.util.*;
 
-
-@Controller
+@RequiredArgsConstructor
+@RestController
 public class IndexController {
 
     private PersonService personService;
