@@ -8,12 +8,18 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import uhs.alphabet.domain.dto.PersonDto;
+import uhs.alphabet.domain.service.PersonService;
+
 import java.io.*;
 import java.util.*;
 
 
 @Controller
 public class IndexController {
+
+    private PersonService personService;
+
     @GetMapping("/")
     public String index() {
         return "index";
@@ -36,6 +42,14 @@ public class IndexController {
 
     @GetMapping("/mirror")
     public String mirror() { return "mirror"; }
+
+    @GetMapping("/testPerson")
+    public String test(Model model) {
+        PersonDto personDto = personService.getPerson();
+
+        model.addAttribute("person", personDto);
+        return "test";
+    }
 
     @RestController
     public class apiControl {
