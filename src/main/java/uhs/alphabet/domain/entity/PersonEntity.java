@@ -14,19 +14,20 @@ import javax.persistence.*;
 public class PersonEntity extends TimeEntity {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = false, name = "handle")
     private String handle;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = false, name = "stunum")
     private int stunum;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = false, name = "rating")
     private int rating;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = false, name = "name")
     private String name;
 
     @Builder
