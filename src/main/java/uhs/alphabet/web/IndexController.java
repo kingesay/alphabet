@@ -48,8 +48,9 @@ public class IndexController {
         PersonDto personDto;
         try {
             personDto = personService.getPerson();
+
         } catch (Exception e) {
-            model.addAttribute("person", "fail");
+            model.addAttribute("person", e);
             return "test";
         }
         model.addAttribute("person", personDto);

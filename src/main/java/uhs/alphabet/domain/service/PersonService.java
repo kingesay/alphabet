@@ -25,6 +25,7 @@ public class PersonService {
                 .rating(personEntity.getRating())
                 .name(personEntity.getName())
                 .createdDate(personEntity.getCreated_time())
+                .modifiedDate(personEntity.getModified_time())
                 .build();
 
         return personDto;
