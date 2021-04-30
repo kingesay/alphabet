@@ -56,13 +56,6 @@ public class IndexController {
         return "test";
     }
 
-    @GetMapping("/test/find/{id}")
-    public PersonDto findById(@PathVariable Long id) {
-        return personService.findById(id);
-    }
-
-
-
     @RestController
     public class apiControl {
         @RequestMapping(value = "/api/getSVG", method = RequestMethod.GET, produces = "image/svg+xml", params = "stuID")

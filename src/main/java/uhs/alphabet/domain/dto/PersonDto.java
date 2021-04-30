@@ -29,23 +29,12 @@ public class PersonDto {
     }
 
     @Builder
-    public PersonDto(Long id, String handle, int stunum, int rating, String name, LocalDateTime created_time, LocalDateTime modified_time) {
+    public PersonDto(Long id, String handle, int stunum, int rating, String name) {
         this.id = id;
         this.handle = handle;
         this.stunum = stunum;
         this.rating = rating;
         this.name = name;
-        this.created_time = created_time;
-        this.modified_time = modified_time;
     }
 
-    public PersonDto(PersonEntity personEntity) {
-        this.id = personEntity.getId();
-        this.handle = personEntity.getHandle();
-        this.stunum = personEntity.getStunum();
-        this.rating = personEntity.getRating();
-        this.name = personEntity.getName();
-        this.created_time = personEntity.getCreated_time();
-        this.modified_time = personEntity.getModified_time();
-    }
 }

@@ -20,7 +20,6 @@ public class saveRepositoryTest {
     @Autowired
     PersonRepository personRepository;
 
-
     @After
     public void cleanup() {
         personRepository.deleteAll();

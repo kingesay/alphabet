@@ -27,7 +27,7 @@ public class PersonEntity extends TimeEntity {
     @Column(length = 50, nullable = false, name = "rating")
     private int rating;
 
-    @Column(length = 50, nullable = false, name = "name")
+    @Column(length = 50, name = "name")
     private String name;
 
     @Builder
