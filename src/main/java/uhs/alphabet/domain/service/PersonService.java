@@ -17,6 +17,13 @@ public class PersonService {
     @Transactional
     public PersonDto getPerson() {
         List<PersonEntity> personEntities = personRepository.findAll();
+        if (personEntities.isEmpty()) return PersonDto.builder()
+                .id(1111L)
+                .handle("null")
+                .stunum(-1)
+                .rating(-1)
+                .name("null")
+                .build();
         PersonEntity personEntity = personEntities.get(0);
         PersonDto personDto = PersonDto.builder()
                 .id(personEntity.getId())
