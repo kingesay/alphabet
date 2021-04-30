@@ -17,13 +17,13 @@ public class PersonService {
     @Transactional
     public PersonDto getPerson() {
         List<PersonEntity> personEntities = personRepository.findAll();
-        if (personEntities.isEmpty()) return PersonDto.builder()
-                .id(1111L)
-                .handle("null")
-                .stunum(-1)
-                .rating(-1)
-                .name("null")
-                .build();
+//        if (personEntities.isEmpty()) return PersonDto.builder()
+//                .id(1111L)
+//                .handle("null")
+//                .stunum(-1)
+//                .rating(-1)
+//                .name("null")
+//                .build();
         PersonEntity personEntity = personEntities.get(0);
         PersonDto personDto = PersonDto.builder()
                 .id(personEntity.getId())
@@ -31,8 +31,8 @@ public class PersonService {
                 .stunum(personEntity.getStunum())
                 .rating(personEntity.getRating())
                 .name(personEntity.getName())
-                .createdDate(personEntity.getCreated_time())
-                .modifiedDate(personEntity.getModified_time())
+                .created_time(personEntity.getCreated_time())
+                .modified_time(personEntity.getModified_time())
                 .build();
 
         return personDto;

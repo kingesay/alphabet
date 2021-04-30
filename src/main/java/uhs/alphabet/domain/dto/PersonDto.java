@@ -14,8 +14,8 @@ public class PersonDto {
     private int stunum;
     private int rating;
     private String name;
-    private LocalDateTime createdDate;
-    private LocalDateTime modifiedDate;
+    private LocalDateTime created_time;
+    private LocalDateTime modified_time;
 
     public PersonEntity toEntity() {
         PersonEntity personEntity = PersonEntity.builder()
@@ -29,13 +29,13 @@ public class PersonDto {
     }
 
     @Builder
-    public PersonDto(Long id, String handle, int stunum, int rating, String name, LocalDateTime createdDate, LocalDateTime modifiedDate) {
+    public PersonDto(Long id, String handle, int stunum, int rating, String name, LocalDateTime created_time, LocalDateTime modified_time) {
         this.id = id;
         this.handle = handle;
         this.stunum = stunum;
         this.rating = rating;
         this.name = name;
-        this.createdDate = createdDate;
-        this.modifiedDate = modifiedDate;
+        this.created_time = created_time;
+        this.modified_time = modified_time;
     }
 }
