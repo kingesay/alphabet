@@ -6,8 +6,11 @@ import uhs.alphabet.domain.repository.PersonRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.*;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @AllArgsConstructor
 @Service
@@ -36,6 +39,14 @@ public class PersonService {
                 .build();
 
         return personDto;
+    }
+
+    @Transactional(readOnly = true)
+    public PersonDto findById(Long id) {
+        PersonEntity entity = personRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
+
+        return new PersonDto(entity);
     }
 
     @Transactional

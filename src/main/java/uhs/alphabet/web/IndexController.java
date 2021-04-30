@@ -48,13 +48,17 @@ public class IndexController {
         PersonDto personDto;
         try {
             personDto = personService.getPerson();
-
         } catch (Exception e) {
             model.addAttribute("person", e);
             return "test";
         }
         model.addAttribute("person", personDto);
         return "test";
+    }
+
+    @GetMapping("/test/find/{id}")
+    public PersonDto findById(@PathVariable Long id) {
+        return personService.findById(id);
     }
 
 
