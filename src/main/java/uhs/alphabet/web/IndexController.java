@@ -19,7 +19,7 @@ import java.util.*;
 @RestController
 public class IndexController {
 
-    private PersonService personService;
+    private final PersonService personService;
 
     @GetMapping("/")
     public String index() {
