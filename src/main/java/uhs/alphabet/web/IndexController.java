@@ -50,8 +50,7 @@ public class IndexController {
         try {
             personDto = personService.getPerson();
         } catch (Exception e) {
-            model.addAttribute("person", e);
-            return "test";
+            return e.toString();
         }
         model.addAttribute("person", personDto);
         return "test";
