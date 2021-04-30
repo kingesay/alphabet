@@ -24,7 +24,7 @@ public class PersonService {
                 .stunum(personEntity.getStunum())
                 .rating(personEntity.getRating())
                 .name(personEntity.getName())
-                .createdDate(personEntity.getCreatedDate())
+                .createdDate(personEntity.getCreated_time())
                 .build();
 
         return personDto;
