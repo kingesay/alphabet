@@ -29,4 +29,9 @@ public class PersonService {
 
         return personDto;
     }
+
+    @Transactional
+    public Long savePerson(PersonDto personDto) {
+        return personRepository.save(personDto.toEntity()).getId();
+    }
 }

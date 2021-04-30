@@ -45,11 +45,18 @@ public class IndexController {
 
     @GetMapping("/testPerson")
     public String test(Model model) {
-        PersonDto personDto = personService.getPerson();
-
+        PersonDto personDto;
+        try {
+            personDto = personService.getPerson();
+        } catch (Exception e) {
+            model.addAttribute("person", "fail");
+            return "test";
+        }
         model.addAttribute("person", personDto);
         return "test";
     }
+
+
 
     @RestController
     public class apiControl {
