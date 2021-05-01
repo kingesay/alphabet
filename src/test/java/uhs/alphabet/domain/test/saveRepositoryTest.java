@@ -29,7 +29,7 @@ public class saveRepositoryTest {
     public void save_person() {
         personRepository.save(PersonEntity.builder()
                 .handle("test")
-                .stunum(1234)
+                .stunum("1234")
                 .rating(1234)
                 .name("asd")
                 .build()
