@@ -11,7 +11,7 @@ import uhs.alphabet.domain.entity.PersonEntity;
 public class PersonDto {
     private Long id;
     private String handle;
-    private int stunum;
+    private String stunum;
     private int rating;
     private String name;
     private LocalDateTime created_time;
@@ -29,7 +29,7 @@ public class PersonDto {
     }
 
     @Builder
-    public PersonDto(Long id, String handle, int stunum, int rating, String name) {
+    public PersonDto(Long id, String handle, String stunum, int rating, String name) {
         this.id = id;
         this.handle = handle;
         this.stunum = stunum;

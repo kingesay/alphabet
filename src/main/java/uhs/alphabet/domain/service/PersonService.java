@@ -17,9 +17,20 @@ import org.springframework.transaction.annotation.Transactional;
 public class PersonService {
     private final PersonRepository personRepository;
 
+    private PersonDto convertEntityToDto(PersonEntity personEntity) {
+        return PersonDto.builder()
+                .id(personEntity.getId())
+                .name(personEntity.getName())
+                .handle(personEntity.getHandle())
+                .rating(personEntity.getRating())
+                .stunum(personEntity.getStunum())
+                .build();
+    }
+
     @Transactional
     public PersonDto getPerson() {
         List<PersonEntity> personEntities = personRepository.findAll();
+
         PersonEntity personEntity = personEntities.get(0);
         PersonDto personDto = PersonDto.builder()
                 .id(personEntity.getId())
@@ -31,6 +42,20 @@ public class PersonService {
 
 
         return personDto;
+    }
+
+    @Transactional
+    public List<PersonDto> searchPerson(String stunum) {
+        List<PersonEntity> personEntities = personRepository.findByStunumContaining(stunum);
+        List<PersonDto> personDtos = new ArrayList<>();
+
+        if (personEntities.isEmpty()) return personDtos;
+
+        for (PersonEntity personEntity : personEntities) {
+            personDtos.add(this.convertEntityToDto(personEntity));
+        }
+
+        return personDtos;
     }
 
     @Transactional

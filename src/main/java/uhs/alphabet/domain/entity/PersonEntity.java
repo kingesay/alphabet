@@ -22,7 +22,7 @@ public class PersonEntity extends TimeEntity {
     private String handle;
 
     @Column(length = 50, nullable = false, name = "stunum")
-    private int stunum;
+    private String stunum;
 
     @Column(length = 50, nullable = false, name = "rating")
     private int rating;
@@ -31,7 +31,7 @@ public class PersonEntity extends TimeEntity {
     private String name;
 
     @Builder
-    public PersonEntity(Long id, String handle, int stunum, int rating, String name) {
+    public PersonEntity(Long id, String handle, String stunum, int rating, String name) {
         this.id = id;
         this.handle = handle;
         this.stunum = stunum;

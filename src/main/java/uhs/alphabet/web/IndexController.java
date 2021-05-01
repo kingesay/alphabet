@@ -60,34 +60,91 @@ public class IndexController {
     public class apiControl {
         @RequestMapping(value = "/api/getSVG", method = RequestMethod.GET, produces = "image/svg+xml", params = "stuID")
         @ResponseBody
-        public ResponseEntity<String> getSVG(@RequestParam("stuID") Integer stuID) {
-            BufferedReader br = null;
-            HashMap<Integer, String> mem = new HashMap<Integer, String>();
-            try {
-//                TODO: 파일 위치 변수에 넣기
-                br = new BufferedReader(new FileReader("/home/ec2-user/app/step2/stuList/in.txt"));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            while (true) {
-                String Line = null;
-                try {
-                    Line = br.readLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                if (Line==null) break;
-                StringTokenizer str = new StringTokenizer(Line," ");
-                String stuNum =  str.nextToken();
-                String handle = str.nextToken();
-                mem.put(Integer.parseInt(stuNum), handle);
-            }
+        public ResponseEntity<String> getSVG(@RequestParam("stuID") String stuID, Model model) {
+            System.out.println(stuID);
+            List<PersonDto> personDtos = personService.searchPerson(stuID);
+
+//            BufferedReader br = null;
+//            HashMap<Integer, String> mem = new HashMap<Integer, String>();
+//            try {
+////                TODO: 파일 위치 변수에 넣기
+//                br = new BufferedReader(new FileReader("/home/ec2-user/app/step2/stuList/in.txt"));
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//            }
+//            while (true) {
+//                String Line = null;
+//                try {
+//                    Line = br.readLine();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//                if (Line==null) break;
+//                StringTokenizer str = new StringTokenizer(Line," ");
+//                String stuNum =  str.nextToken();
+//                String handle = str.nextToken();
+//                mem.put(Integer.parseInt(stuNum), handle);
+//            }
 
             String handle = "None";
-            if (mem.containsKey(stuID)) {
-                handle = mem.get(stuID);
+            String name = "None";
+            if (!personDtos.isEmpty()) {
+                handle = personDtos.get(0).getHandle();
+                name = personDtos.get(0).getName();
             }
-            return new ResponseEntity<String>("<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:svgjs=\"http://svgjs.com/svgjs\" width=\"353\" height=\"134\"><g><rect width=\"30\" height=\"40\" fill=\"#c4e693\" stroke-width=\"2\" stroke=\"#111111\" x=\"10\" y=\"15\"></rect><rect width=\"60\" height=\"40\" fill=\"#ffc519\" stroke-width=\"2\" stroke=\"#111111\" x=\"100\" y=\"15\"></rect><rect width=\"30\" height=\"60\" fill=\"#fffa78\" stroke-width=\"2\" stroke=\"#111111\" x=\"40\" y=\"35\"></rect><rect width=\"90\" height=\"20\" fill=\"#3cfbff\" stroke-width=\"2\" stroke=\"#111111\" x=\"10\" y=\"95\"></rect><rect width=\"30\" height=\"40\" fill=\"#4b4b4b\" stroke-width=\"2\" stroke=\"#111111\" x=\"70\" y=\"15\"></rect><rect width=\"30\" height=\"40\" fill=\"#ff5675\" stroke-width=\"2\" stroke=\"#111111\" x=\"130\" y=\"55\"></rect><rect width=\"30\" height=\"20\" fill=\"#c4e693\" stroke-width=\"2\" stroke=\"#111111\" x=\"100\" y=\"95\"></rect><rect width=\"30\" height=\"20\" fill=\"none\" stroke-width=\"2\" stroke=\"#111111\" x=\"40\" y=\"15\"></rect><rect width=\"30\" height=\"40\" fill=\"none\" stroke-width=\"2\" stroke=\"#111111\" x=\"10\" y=\"55\"></rect><rect width=\"60\" height=\"40\" fill=\"none\" stroke-width=\"2\" stroke=\"#111111\" x=\"70\" y=\"55\"></rect><rect width=\"30\" height=\"20\" fill=\"none\" stroke-width=\"2\" stroke=\"#111111\" x=\"130\" y=\"95\"></rect></g><text font-size=\"20\" id=\"handle\" x=\"210\" y=\"55.828125\"><tspan dy=\"26\" x=\"210\">"+handle+"</tspan></text><text font-size=\"20\" x=\"210.921875\" y=\"5.828125\"><tspan dy=\"26\" x=\"210.921875\">ALPHABET</tspan></text><rect width=\"350\" height=\"131\" fill=\"none\" stroke=\"#111111\" rx=\"20\" ry=\"20\" stroke-width=\"3\" x=\"1\" y=\"1\"></rect></svg>", HttpStatus.OK);
+//            if (mem.containsKey(stuID)) {
+//                handle = mem.get(stuID);
+//            }
+            return new ResponseEntity<String>("<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:svgjs=\"http://svgjs.com/svgjs\" width=\"353\" height=\"134\">\n" +
+                    "<g>\n" +
+                    "\t<rect width=\"30\" height=\"40\" fill=\"#c4e693\" stroke-width=\"2\" stroke=\"#111111\" x=\"10\" y=\"15\" opacity=\"0\">\n" +
+                    "\t  <animate id=\"animation1\" attributeName=\"opacity\" values=\"0;1\" dur=\"0.4s\" fill=\"freeze\"></animate>\n" +
+                    "\t</rect>\n" +
+                    "\t<rect width=\"60\" height=\"40\" fill=\"#ffc519\" stroke-width=\"2\" stroke=\"#111111\" x=\"100\" y=\"15\" opacity=\"0\">\n" +
+                    "\t  <animate id=\"animation2\" attributeName=\"opacity\" values=\"0;1\" dur=\"0.4s\" fill=\"freeze\" begin=\"animation1.end\"></animate>\n" +
+                    "\t</rect>\n" +
+                    "\t<rect width=\"30\" height=\"60\" fill=\"#fffa78\" stroke-width=\"2\" stroke=\"#111111\" x=\"40\" y=\"35\" opacity=\"0\">\n" +
+                    "\t  <animate id=\"animation3\" attributeName=\"opacity\" values=\"0;1\" dur=\"0.4s\" fill=\"freeze\" begin=\"animation2.end\"></animate>\n" +
+                    "\t</rect>\n" +
+                    "\t<rect width=\"90\" height=\"20\" fill=\"#3cfbff\" stroke-width=\"2\" stroke=\"#111111\" x=\"10\" y=\"95\" opacity=\"0\">\n" +
+                    "\t  <animate id=\"animation4\" attributeName=\"opacity\" values=\"0;1\" dur=\"0.4s\" fill=\"freeze\" begin=\"animation3.end\"></animate>\n" +
+                    "\t</rect>\n" +
+                    "\t<rect width=\"30\" height=\"40\" fill=\"#111111\" stroke-width=\"2\" stroke=\"#111111\" x=\"70\" y=\"15\" opacity=\"0\">\n" +
+                    "\t  <animate id=\"animation5\" attributeName=\"opacity\" values=\"0;1\" dur=\"0.4s\" fill=\"freeze\" begin=\"animation4.end\"></animate>\n" +
+                    "\t</rect>\n" +
+                    "\t<rect width=\"30\" height=\"40\" fill=\"#ff5675\" stroke-width=\"2\" stroke=\"#111111\" x=\"130\" y=\"55\" opacity=\"0\">\n" +
+                    "\t  <animate id=\"animation6\" attributeName=\"opacity\" values=\"0;1\" dur=\"0.4\" fill=\"freeze\" begin=\"animation5.end\"></animate>\n" +
+                    "\t</rect>\n" +
+                    "\t<rect width=\"30\" height=\"20\" fill=\"#c4e693\" stroke-width=\"2\" stroke=\"#111111\" x=\"100\" y=\"95\" opacity=\"0\">\n" +
+                    "\t  <animate id=\"animation7\" attributeName=\"opacity\" values=\"0;1\" dur=\"0.4s\" fill=\"freeze\" begin=\"animation6.end\"></animate>\n" +
+                    "\t</rect>\n" +
+                    "\t<rect width=\"30\" height=\"20\" fill=\"none\" stroke-width=\"2\" stroke=\"#111111\" x=\"40\" y=\"15\" opacity=\"0\">\n" +
+                    "\t  <animate id=\"animation8\" attributeName=\"opacity\" values=\"0;1\" dur=\"0.5s\" fill=\"freeze\" begin=\"animation7.end\"></animate>\n" +
+                    "\t</rect>\n" +
+                    "\t<rect width=\"30\" height=\"40\" fill=\"none\" stroke-width=\"2\" stroke=\"#111111\" x=\"10\" y=\"55\" opacity=\"0\">\n" +
+                    "\t  <animate id=\"animation9\" attributeName=\"opacity\" values=\"0;1\" dur=\"0.5s\" fill=\"freeze\" begin=\"animation7.end\"></animate>\n" +
+                    "\t</rect>\n" +
+                    "\t<rect width=\"60\" height=\"40\" fill=\"none\" stroke-width=\"2\" stroke=\"#111111\" x=\"70\" y=\"55\" opacity=\"0\">\n" +
+                    "\t  <animate id=\"animation10\" attributeName=\"opacity\" values=\"0;1\" dur=\"0.5s\" fill=\"freeze\" begin=\"animation7.end\"></animate>\n" +
+                    "\t</rect>\n" +
+                    "\t<rect width=\"30\" height=\"20\" fill=\"none\" stroke-width=\"2\" stroke=\"#111111\" x=\"130\" y=\"95\" opacity=\"0\">\n" +
+                    "\t  <animate id=\"animation11\" attributeName=\"opacity\" values=\"0;1\" dur=\"0.5s\" fill=\"freeze\" begin=\"animation7.end\"></animate>\n" +
+                    "\t</rect>\n" +
+                    "</g>\n" +
+                    "<text font-size=\"20\" x=\"210\" y=\"40\" opacity=\"0\">\n" +
+                    "\t<tspan id=\"name\" dy=\"26\" x=\"210.0109466053608\">"+name+"</tspan>\n" +
+                    "  <animate id=\"animation14\" attributeName=\"opacity\" values=\"0;1\" dur=\"0.5s\" fill=\"freeze\" begin=\"animation12.end\"></animate>\n" +
+                    "</text>\n" +
+                    "<text font-size=\"20\" x=\"210\" y=\"60\" opacity=\"0\">\n" +
+                    "\t<tspan id=\"handle\" dy=\"26\" x=\"210.0109466053608\">"+handle+"</tspan>\n" +
+                    "  <animate id=\"animation13\" attributeName=\"opacity\" values=\"0;1\" dur=\"0.5s\" fill=\"freeze\" begin=\"animation12.end\"></animate>\n" +
+                    "</text>\n" +
+                    "<text font-size=\"20\" x=\"160\" y=\"5\" opacity=\"0\">\n" +
+                    "\t<tspan dy=\"26\" x=\"210.921875\">ALPHABET</tspan>\n" +
+                    "  <animate id=\"animation12\" attributeName=\"opacity\" values=\"0;1\" dur=\"0.5s\" fill=\"freeze\" begin=\"animation7.end\"></animate>\n" +
+                    "</text>\n" +
+                    "<rect width=\"350\" height=\"131\" fill=\"none\" stroke=\"#111111\" rx=\"20\" ry=\"20\" stroke-width=\"3\" x=\"1\" y=\"1\"></rect>\n" +
+                    "</svg>", HttpStatus.OK);
         }
 
         @RequestMapping(value = "/api/getCF", method = RequestMethod.GET, produces = "image/svg+xml", params = "handle")
