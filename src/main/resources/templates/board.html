@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Alphabet</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="theme-color" content="#FFFFFF">
+    <link rel="stylesheet" href="/css/commons.css">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" type="text/css" href="/css/font.css">
+</head>
+<body>
+<nav class = "navigation">
+    <ul class = "nav_items">
+        <li class="nav_item_logo"><a href="/"><img class="logo" src="/img/Wabcblock.svg"></a></li>
+        <li class="nav_item"><a href="/introduction">소개</a></li>
+        <li class="nav_item"><a href="/history">기록</a></li>
+        <li class="nav_item"><a href="/contact">가입</a></li>
+    </ul>
+</nav>
+<main class="contents">
+    <table>
+        <thead>
+            <tr>
+                <th class="board_title">title</th>
+                <th class="board_writer">writer</th>
+                <th class="board_createdtime">createdTime</th>
+            </tr>
+        </thead>
+<!--        <tbody>-->
+<!--            <tr th:each="board : ${boardList}">-->
+<!--                <td>-->
+<!--                    <span th:text="${board.board_id}"></span>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <span th:text="${board.title}"></span>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <span th:text="${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm')}"></span>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--        </tbody>-->
+    </table>
+</main>
+<div class="foot" style="clear: both;">
+    <div class="foot_text">
+        <p>주소: 경기도 화성시 봉담읍 최루백로 72 협성대학교</p>
+    </div>
+    <div class="foot_text">
+        <a href="https://www.uhs.ac.kr/sites/uhs/index.do">협성대학교 / </a>
+        <a href="/mirror">협성대학교 boj 그룹 / </a>
+        <a href="/mirror">알파벳 boj 그룹</a>
+    </div>
+    <div class="foot_license">
+        <p>Copyright 2021. 김태훈 all rights reserved.</p>
+    </div>
+</div>
+</body>
+
+<script>
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}
+        x[myIndex-1].style.display = "block";
+        setTimeout(carousel, 2500);
+    }
+</script>
+</html>

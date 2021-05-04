@@ -9,7 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import uhs.alphabet.domain.dto.BoardDto;
 import uhs.alphabet.domain.dto.PersonDto;
+import uhs.alphabet.domain.service.BoardService;
 import uhs.alphabet.domain.service.PersonService;
 
 import java.io.*;
@@ -20,6 +22,7 @@ import java.util.*;
 public class IndexController {
 
     private final PersonService personService;
+    private  final BoardService boardService;
 
     @GetMapping("/")
     public String index() {
@@ -56,6 +59,22 @@ public class IndexController {
         return "test";
     }
 
+    @GetMapping("/board")
+    public String list(Model model) {
+        List<BoardDto> boardList = boardService.getBoardList();
+
+        model.addAttribute("boardList", boardList);
+        return "board";
+    }
+
+    @GetMapping("/board/{no}")
+    public String detail(@PathVariable("no") Long no, Model model) {
+        BoardDto boardDto = boardService.getBoard(no);
+        model.addAttribute("board", boardDto);
+
+        return "boardDetail";
+    }
+
     @RestController
     public class apiControl {
         @RequestMapping(value = "/api/getSVG", method = RequestMethod.GET, produces = "image/svg+xml", params = "stuID")
@@ -64,37 +83,13 @@ public class IndexController {
             System.out.println(stuID);
             List<PersonDto> personDtos = personService.searchPerson(stuID);
 
-//            BufferedReader br = null;
-//            HashMap<Integer, String> mem = new HashMap<Integer, String>();
-//            try {
-////                TODO: 파일 위치 변수에 넣기
-//                br = new BufferedReader(new FileReader("/home/ec2-user/app/step2/stuList/in.txt"));
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//            }
-//            while (true) {
-//                String Line = null;
-//                try {
-//                    Line = br.readLine();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//                if (Line==null) break;
-//                StringTokenizer str = new StringTokenizer(Line," ");
-//                String stuNum =  str.nextToken();
-//                String handle = str.nextToken();
-//                mem.put(Integer.parseInt(stuNum), handle);
-//            }
-
             String handle = "None";
             String name = "None";
             if (!personDtos.isEmpty()) {
                 handle = personDtos.get(0).getHandle();
                 name = personDtos.get(0).getName();
             }
-//            if (mem.containsKey(stuID)) {
-//                handle = mem.get(stuID);
-//            }
+
             return new ResponseEntity<String>("<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:svgjs=\"http://svgjs.com/svgjs\" width=\"353\" height=\"134\">\n" +
                     "<g>\n" +
                     "\t<rect width=\"30\" height=\"40\" fill=\"#c4e693\" stroke-width=\"2\" stroke=\"#111111\" x=\"10\" y=\"15\" opacity=\"0\">\n" +

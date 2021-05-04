@@ -1,0 +1,36 @@
+{{>layout/header}}
+<nav class = "navigation">
+    <ul class = "nav_items">
+        <li class="nav_item_logo"><a href="/"><img class="logo" src="/img/Wabcblock.svg"></a></li>
+        <li class="nav_item"><a href="/introduction">소개</a></li>
+        <li class="nav_item"><a href="/history">기록</a></li>
+        <li class="nav_item"><a href="/contact">가입</a></li>
+    </ul>
+</nav>
+<main class="contents">
+    <section>
+        <table class="table table-horizontal table-bordered">
+            <thead class="thead-strong">
+            <tr>
+                <th>게시글 번호</th>
+                <th>제목</th>
+                <th>최종수정일</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            {{#boardList}}
+                <tr>
+                    <td>{{board_id}}</td>
+                    <td>
+                        <a href="/board/{{& board_id }}">
+                            {{title}}
+                        </a>
+                    </td>
+                    <td>{{created_time}}</td>
+                </tr>
+            {{/boardList}}
+            </tbody>
+        </table>
+    </section>
+</main>
+{{>layout/footer}}
