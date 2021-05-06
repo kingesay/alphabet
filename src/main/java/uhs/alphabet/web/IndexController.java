@@ -53,7 +53,7 @@ public class IndexController {
     @PostMapping("/post")
     public String write(BoardDto boardDto) {
         boardService.saveBoard(boardDto);
-        return "/board";
+        return "redirect:/board";
     }
 
 
