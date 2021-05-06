@@ -47,6 +47,16 @@ public class IndexController {
     @GetMapping("/mirror")
     public String mirror() { return "mirror"; }
 
+    @GetMapping("/post")
+    public String write() { return "post"; }
+
+    @PostMapping("/post")
+    public String write(BoardDto boardDto) {
+        boardService.saveBoard(boardDto);
+        return "/board";
+    }
+
+
     @GetMapping("/testPerson")
     public String test(Model model) {
         PersonDto personDto;

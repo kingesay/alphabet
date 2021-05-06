@@ -1,0 +1,29 @@
+{{>layout/header}}
+<nav class = "navigation">
+    <ul class = "nav_items">
+        <li class="nav_item_logo"><a href="/"><img class="logo" src="/img/Wabcblock.svg"></a></li>
+        <li class="nav_item"><a href="/introduction">소개</a></li>
+        <li class="nav_item"><a href="/history">기록</a></li>
+        <li class="nav_item"><a href="/contact">가입</a></li>
+    </ul>
+</nav>
+<main class="contents">
+    <section>
+        <form action="post" method="post">
+            <div>
+                <label>title</label>
+                <input type="text" name="title">
+            </div>
+            <div>
+                <label>password</label>
+                <input type="text" name="pw">
+            </div>
+            <div>
+                <label>content</label>
+                <textarea name="content"></textarea>
+            </div>
+            <input type="submit" value="post">
+        </form>
+    </section>
+</main>
+{{>layout/footer}}

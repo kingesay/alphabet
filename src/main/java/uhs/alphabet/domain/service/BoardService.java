@@ -38,6 +38,11 @@ public class BoardService {
     }
 
     @Transactional
+    public Long saveBoard(BoardDto boardDto) {
+        return boardRepository.save(boardDto.toEntity()).getBoard_id();
+    }
+
+    @Transactional
     public BoardDto getBoard(Long id) {
         Optional<BoardEntity> boardEntityWrapper = boardRepository.findById(id);
         BoardEntity boardEntity = boardEntityWrapper.get();
