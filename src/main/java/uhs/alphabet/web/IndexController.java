@@ -63,8 +63,9 @@ public class IndexController {
     }
 
     @GetMapping("/post/edit/{no}")
-    public String edit(@PathVariable("no") Long id, Model model) {
+    public String edit(@PathVariable("no") Long id, Model model, String pw) {
         BoardDto boardDto = boardService.getBoard(id);
+        if (!boardDto.getPw().equals(pw)) return "redirect:/board";
         model.addAttribute("boardDto", boardDto);
         return "update";
     }

@@ -10,15 +10,26 @@
 <main class="contents">
     <section>
         {{#board}}
-            {{title}}
-            <br>
-            {{content}}
-            <a href="/post/edit/{{board_id}}"><button>edit</button></a>
-            <form id="delete-form" action="/post/{{board_id}}" method="post">
-                <input type="hidden" name="_method" value="delete"/>
-                <input type="password" name="pw">
-                <button id="delete-btn">delete</button>
-            </form>
+            <div class="bDetail_title">
+                {{title}}
+            </div>
+            <hr>
+            <div class="bDetail_content">
+                {{content}}
+            </div>
+            <div class="bDetail_modify">
+                <form class="delete-form" action="/post/{{board_id}}" method="post">
+                    <input type="hidden" name="_method" value="delete"/>
+                    <input type="password" name="pw">
+                    <button class="bDetail_form_button" id="delete-btn">delete</button>
+                </form>
+                <br>
+                <form action="/post/edit/{{board_id}}" method="put">
+                    <input type="hidden" name="_method" value="put"/>
+                    <input type="password" name="pw">
+                    <button class="bDetail_form_button" id="edit-btn">edit</button>
+                </form>
+            </div>
         {{/board}}
     </section>
 </main>

@@ -9,15 +9,20 @@
 </nav>
 <main class="contents">
     <section>
-            <form action="/post/edit/{{boardDto.board_id}}" method="post">
-                <input type="hidden" name="_method" value="put"/>
-                <input type="hidden" name="board_id" value="{{boardDto.board_id}}"/>
-                제목 : <input type="text" name="title" value="{{boardDto.title}}" readonly><br>
-                password : <input type="password" name="pw"><br>
-                <textarea type="text" name="content">{{boardDto.content}}</textarea><br>
-
-                <input type="submit" value="edit">
-            </form>
+        <form action="/post/edit/{{boardDto.board_id}}" method="post">
+            <input type="hidden" name="_method" value="put"/>
+            <input type="hidden" name="board_id" value="{{boardDto.board_id}}"/>
+            <div class="form_up">
+                <input class="form_up_title" type="text" name="title" value="{{boardDto.title}}"/>
+                <hr>
+                <textarea class="form_up_content" name="content" rows="8" placeholder="">{{boardDto.content}}</textarea>
+            </div>
+            <div>
+                <label>password</label>
+                <input class="form_down_pw" type="password" name="pw">
+            </div>
+            <input type="submit" value="edit">
+        </form>
     </section>
 </main>
 {{>layout/footer}}

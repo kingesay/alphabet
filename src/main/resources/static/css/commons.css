@@ -216,6 +216,36 @@ td.name{
     width:15%;
     padding-left:5%;
 }
+
+.bDetail_title{
+    padding-top: 30px;
+    margin: 12px;
+    font-size: 50px;
+}
+
+.bDetail_content{
+    margin: 12px;
+    font-size: 30px;
+}
+
+.bDetail_a_boutton{
+    margin-top: 37px;
+    border:1px solid #111;
+    width:50px;
+    height: 30px;
+    float: left;
+}
+
+.bDetail_form_button{
+    border:1px solid #111;
+    width:50px;
+    height: 30px;
+}
+
+.delete-form{
+    float: left;
+}
+
 /*
     footer
 */
