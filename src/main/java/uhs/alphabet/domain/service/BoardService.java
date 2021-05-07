@@ -58,4 +58,12 @@ public class BoardService {
 
         return boardDto;
     }
+
+    @Transactional
+    public void deletePost(Long id, String pw) {
+        Optional<BoardEntity> boardEntityOptional = boardRepository.findById(id);
+        BoardEntity boardEntity = boardEntityOptional.get();
+        if (boardEntity.getPw().toString().equals(pw)) boardRepository.deleteById(id);
+    }
+
 }

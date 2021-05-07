@@ -10,17 +10,14 @@
 <main class="contents">
     <section>
         <form action="post" method="post">
-            <div>
-                <label>title</label>
-                <input type="text" name="title">
+            <div class="form_up">
+                <input class="form_up_title" type="text" name="title" placeholder="제목을 입력하세요">
+                <hr>
+                <textarea class="form_up_content" name="content" rows="8" placeholder=""></textarea>
             </div>
             <div>
                 <label>password</label>
-                <input type="text" name="pw">
-            </div>
-            <div>
-                <label>content</label>
-                <textarea name="content"></textarea>
+                <input class="form_down_pw" type="password" name="pw">
             </div>
             <input type="submit" value="post">
         </form>

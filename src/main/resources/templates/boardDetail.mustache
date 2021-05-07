@@ -13,6 +13,12 @@
             {{title}}
             <br>
             {{content}}
+            <a href="/post/edit/{{board_id}}"><button>edit</button></a>
+            <form id="delete-form" action="/post/{{board_id}}" method="post">
+                <input type="hidden" name="_method" value="delete"/>
+                <input type="password" name="pw">
+                <button id="delete-btn">delete</button>
+            </form>
         {{/board}}
     </section>
 </main>

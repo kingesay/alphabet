@@ -9,29 +9,29 @@
 </nav>
 <main class="contents">
     <section>
-        <table class="table table-horizontal table-bordered">
+        <table>
             <thead class="thead-strong">
             <tr>
-                <th>게시글 번호</th>
-                <th>제목</th>
-                <th>최종수정일</th>
+                <th class="board_table_num">게시글 번호</th>
+                <th class="board_table_title">제목</th>
+                <th class="board_table_date">최종수정일</th>
             </tr>
             </thead>
             <tbody id="tbody">
             {{#boardList}}
                 <tr>
-                    <td>{{board_id}}</td>
-                    <td>
+                    <td class="board_list">{{board_id}}</td>
+                    <th>
                         <a href="/board/{{& board_id }}">
                             {{title}}
                         </a>
-                    </td>
+                    </th>
                     <td>{{created_time}}</td>
                 </tr>
             {{/boardList}}
             </tbody>
         </table>
-        <a href="/post">post</a>
+        <a href="/post">추가하기</a>
     </section>
 </main>
 {{>layout/footer}}

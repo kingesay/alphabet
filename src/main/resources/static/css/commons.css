@@ -142,22 +142,80 @@ div.items {
     font-size: 50px;
 }
 
+hr{
+    width: 97%;
+}
+
+form{
+    padding-top: 30px;
+    font-size: 30px;
+}
+
+.form_up{
+    border: 1px solid #111;
+}
+
+.form_up_title {
+    width: 100%;
+    box-sizing: border-box;
+    border: 0px;
+    font-size: 16px;
+    background-color: white;
+    background-repeat: no-repeat;
+    padding: 12px;
+}
+
+.form_up_content{
+    width:100%;
+    border: 0px;
+    padding: 12px;
+    box-sizing: border-box;
+    /*사이즈조절 없애기*/
+    resize: none;
+    overflow: hidden
+}
+
+/*눌렀을 때 border없애기*/
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.form_down_pw{
+    width: 20%;
+}
+
 table{
     width:100%;
     text-align:left;
+    /*table 위아래 조절*/
+    border-collapse: separate;
+    border-spacing: 0 30px;
 }
 thead > tr > th{
     font-size:40px;
-    padding-top:30px;
 }
+
 tbody > tr > th{
     font-size:20px;
 }
+
+.board_table_num{
+    width:20%;
+    min-width: 147px;
+}
+
+.board_table_title{
+    width:45%;
+}
+
+.board_table_date{
+    min-width: 144px;
+}
+
 td.name{
     width:15%;
     padding-left:5%;
 }
-
 /*
     footer
 */

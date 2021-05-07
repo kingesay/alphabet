@@ -1,0 +1,23 @@
+{{>layout/header}}
+<nav class = "navigation">
+    <ul class = "nav_items">
+        <li class="nav_item_logo"><a href="/"><img class="logo" src="/img/Wabcblock.svg"></a></li>
+        <li class="nav_item"><a href="/introduction">소개</a></li>
+        <li class="nav_item"><a href="/history">기록</a></li>
+        <li class="nav_item"><a href="/contact">가입</a></li>
+    </ul>
+</nav>
+<main class="contents">
+    <section>
+            <form action="/post/edit/{{boardDto.board_id}}" method="post">
+                <input type="hidden" name="_method" value="put"/>
+                <input type="hidden" name="board_id" value="{{boardDto.board_id}}"/>
+                제목 : <input type="text" name="title" value="{{boardDto.title}}" readonly><br>
+                password : <input type="password" name="pw"><br>
+                <textarea type="text" name="content">{{boardDto.content}}</textarea><br>
+
+                <input type="submit" value="edit">
+            </form>
+    </section>
+</main>
+{{>layout/footer}}

@@ -48,14 +48,33 @@ public class IndexController {
     public String mirror() { return "mirror"; }
 
     @GetMapping("/post")
-    public String write() { return "post"; }
+    public String post() { return "post"; }
 
     @PostMapping("/post")
-    public String write(BoardDto boardDto) {
+    public String post(BoardDto boardDto) {
         boardService.saveBoard(boardDto);
         return "redirect:/board";
     }
 
+    @DeleteMapping("/post/{no}")
+    public String post(@PathVariable("no") Long no, String pw) {
+        boardService.deletePost(no, pw);
+        return "redirect:/board";
+    }
+
+    @GetMapping("/post/edit/{no}")
+    public String edit(@PathVariable("no") Long id, Model model) {
+        BoardDto boardDto = boardService.getBoard(id);
+        model.addAttribute("boardDto", boardDto);
+        return "update";
+    }
+
+    @PutMapping("/post/edit/{no}")
+    public String update(BoardDto boardDto) {
+        boardService.saveBoard(boardDto);
+
+        return "redirect:/board";
+    }
 
     @GetMapping("/testPerson")
     public String test(Model model) {
