@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -14,7 +13,6 @@ import uhs.alphabet.domain.dto.PersonDto;
 import uhs.alphabet.domain.service.BoardService;
 import uhs.alphabet.domain.service.PersonService;
 
-import java.io.*;
 import java.util.*;
 
 @RequiredArgsConstructor
@@ -82,13 +80,13 @@ public class IndexController {
     @GetMapping("/doedit/{no}")
     public String doEdit(@PathVariable("no") Long id, Model model) {
         model.addAttribute("id", id);
-        return "/doEdit";
+        return "doedit";
     }
 
     @GetMapping("/dodelete/{no}")
     public String doDelete(@PathVariable("no") Long id, Model model) {
         model.addAttribute("id", id);
-        return "/doDelete";
+        return "dodelete";
     }
 
     @GetMapping("/testPerson")
