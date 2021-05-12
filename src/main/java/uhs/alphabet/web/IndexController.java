@@ -47,6 +47,9 @@ public class IndexController {
     @GetMapping("/mirror")
     public String mirror() { return "mirror"; }
 
+    @GetMapping("/journal")
+    public String journal() { return "journal"; }
+
     @GetMapping("/post")
     public String post() { return "post"; }
 
