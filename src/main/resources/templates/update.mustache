@@ -5,23 +5,24 @@
         <li class="nav_item"><a href="/introduction">소개</a></li>
         <li class="nav_item"><a href="/history">기록</a></li>
         <li class="nav_item"><a href="/contact">가입</a></li>
+        <li class="nav_item"><a href="/board">게시판</a></li>
     </ul>
 </nav>
 <main class="contents">
     <section>
-        <form action="/post/edit/{{boardDto.board_id}}" method="post">
+        <form class="board_form" action="/post/edit/{{boardDto.board_id}}" method="post">
             <input type="hidden" name="_method" value="put"/>
             <input type="hidden" name="board_id" value="{{boardDto.board_id}}"/>
-            <div class="form_up">
-                <input class="form_up_title" type="text" name="title" value="{{boardDto.title}}"/>
-                <hr>
-                <textarea class="form_up_content" name="content" rows="8" placeholder="">{{boardDto.content}}</textarea>
+            <div class="border_1">
+                <input class="board_form_title" type="text" name="title" value="{{boardDto.title}}"/>
+                <hr class="hr_w97">
+                <textarea class="board_form_content" name="content" rows="8" placeholder="">{{boardDto.content}}</textarea>
             </div>
             <div>
                 <label>password</label>
-                <input class="form_down_pw" type="password" name="pw">
+                <input type="password" name="pw">
             </div>
-            <input type="submit" value="edit">
+            <input class="edit_btn" type="submit" value="edit">
         </form>
     </section>
 </main>

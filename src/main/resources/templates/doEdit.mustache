@@ -10,11 +10,12 @@
 </nav>
 <main class="contents">
     <section>
-        <div class="items">
-            <div class="item_text">
-                <p class="hello_text">소개<p>
-                <p>2020년 김태훈 학우가 학교에 알고리즘 동아리가 없는걸 보고 하나 만든게 시작입니다.</p>
-            </div>
+        <div class="boardD_modify disp_inline">
+            <form class="edit_form disp_inline" action="/post/edit/{{id}}" method="get">
+<!--                <input type="hidden" name="_method" value="put"/>-->
+                <input type="password" name="pw">
+                <button class="edit_btn" id="edit-btn">edit</button>
+            </form>
         </div>
     </section>
 </main>

@@ -5,29 +5,25 @@
         <li class="nav_item"><a href="/introduction">소개</a></li>
         <li class="nav_item"><a href="/history">기록</a></li>
         <li class="nav_item"><a href="/contact">가입</a></li>
+        <li class="nav_item"><a href="/board">게시판</a></li>
     </ul>
 </nav>
 <main class="contents">
     <section>
         {{#board}}
-            <div class="bDetail_title">
+            <div class="boardD_title">
                 {{title}}
             </div>
             <hr>
-            <div class="bDetail_content">
+            <div class="boardD_content">
                 {{content}}
             </div>
-            <div class="bDetail_modify">
-                <form class="delete-form" action="/post/{{board_id}}" method="post">
-                    <input type="hidden" name="_method" value="delete"/>
-                    <input type="password" name="pw">
-                    <button class="bDetail_form_button" id="delete-btn">delete</button>
+            <div class="boardD_modify disp_inline">
+                <form class="delete-form disp_inline" action="/dodelete/{{board_id}}" method="get">
+                    <button class="delete_btn" id="delete-btn">delete</button>
                 </form>
-                <br>
-                <form action="/post/edit/{{board_id}}" method="put">
-                    <input type="hidden" name="_method" value="put"/>
-                    <input type="password" name="pw">
-                    <button class="bDetail_form_button" id="edit-btn">edit</button>
+                <form class="edit_form disp_inline" action="/doedit/{{board_id}}" method="get">
+                    <button class="edit_btn" id="edit-btn">edit</button>
                 </form>
             </div>
         {{/board}}

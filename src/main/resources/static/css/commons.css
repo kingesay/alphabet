@@ -142,20 +142,27 @@ div.items {
     font-size: 50px;
 }
 
-hr{
+.hr_w97{
     width: 97%;
 }
 
-form{
+.border_1{
+    border: 1px solid #111;
+}
+
+.disp_inline{
+    display: inline-block
+}
+
+/*
+    board
+*/
+.board_form{
     padding-top: 30px;
     font-size: 30px;
 }
 
-.form_up{
-    border: 1px solid #111;
-}
-
-.form_up_title {
+.board_form_title {
     width: 100%;
     box-sizing: border-box;
     border: 0px;
@@ -165,7 +172,7 @@ form{
     padding: 12px;
 }
 
-.form_up_content{
+.board_form_content{
     width:100%;
     border: 0px;
     padding: 12px;
@@ -179,11 +186,9 @@ form{
 textarea:focus, input:focus{
     outline: none;
 }
-
-.form_down_pw{
-    width: 20%;
-}
-
+/*
+    table
+*/
 table{
     width:100%;
     text-align:left;
@@ -199,51 +204,65 @@ tbody > tr > th{
     font-size:20px;
 }
 
-.board_table_num{
-    width:20%;
-    min-width: 147px;
-}
-
-.board_table_title{
-    width:45%;
-}
-
-.board_table_date{
-    min-width: 144px;
-}
-
 td.name{
     width:15%;
     padding-left:5%;
 }
 
-.bDetail_title{
+.board_tbl_num{
+    width:20%;
+    min-width: 148px;
+}
+
+.board_tbl_title{
+    width:45%;
+}
+
+.board_tbl_date{
+    min-width: 144px;
+}
+/*
+    boardD
+*/
+.boardD_title{
     padding-top: 30px;
     margin: 12px;
     font-size: 50px;
 }
 
-.bDetail_content{
+.boardD_content{
     margin: 12px;
     font-size: 30px;
 }
 
-.bDetail_a_boutton{
-    margin-top: 37px;
-    border:1px solid #111;
+/*
+    button
+*/
+
+.delete_btn{
+    border:1px solid red;
+    background-color: white;
+    color: red;
     width:50px;
     height: 30px;
-    float: left;
 }
 
-.bDetail_form_button{
-    border:1px solid #111;
+.delete_btn:hover{
+    background-color: red;
+    color: white;
+}
+
+.edit_btn{
+    border:1px solid black;
+    background-color: white;
+    color:black;
     width:50px;
     height: 30px;
 }
 
-.delete-form{
-    float: left;
+.edit_btn:hover{
+    background-color: black;
+    color: white;
 }
 
 /*

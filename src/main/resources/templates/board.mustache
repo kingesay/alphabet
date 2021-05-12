@@ -5,6 +5,7 @@
         <li class="nav_item"><a href="/introduction">소개</a></li>
         <li class="nav_item"><a href="/history">기록</a></li>
         <li class="nav_item"><a href="/contact">가입</a></li>
+        <li class="nav_item"><a href="/board">게시판</a></li>
     </ul>
 </nav>
 <main class="contents">
@@ -12,9 +13,9 @@
         <table>
             <thead class="thead-strong">
             <tr>
-                <th class="board_table_num">게시글 번호</th>
-                <th class="board_table_title">제목</th>
-                <th class="board_table_date">최종수정일</th>
+                <th class="board_tbl_num">게시글 번호</th>
+                <th class="board_tbl_title">제목</th>
+                <th class="board_tbl_date">최종수정일</th>
             </tr>
             </thead>
             <tbody id="tbody">
@@ -26,7 +27,7 @@
                             {{title}}
                         </a>
                     </th>
-                    <td>{{created_time}}</td>
+                    <td class="over_hidden">{{created_time}}</td>
                 </tr>
             {{/boardList}}
             </tbody>
