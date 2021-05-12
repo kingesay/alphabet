@@ -19,14 +19,14 @@
                 {{content}}
             </div>
             <div class="boardD_modify disp_inline">
-                <a href="/dodelete/{{board_id}}"><button class="delete_btn" id="delete-btn">delete</button></a>
-                <a href="/doedit/{{board_id}}"><button class="edit_btn" id="edit-btn">edit</button></a>
-<!--                <form class="delete-form disp_inline" action="/dodelete/{{board_id}}" method="get">-->
-<!--                    <button class="delete_btn" id="delete-btn">delete</button>-->
-<!--                </form>-->
-<!--                <form class="edit_form disp_inline" action="/doedit/{{board_id}}" method="get">-->
-<!--                    <button class="edit_btn" id="edit-btn">edit</button>-->
-<!--                </form>-->
+<!--                <a href="/dodelete/{{board_id}}"><button class="delete_btn" id="delete-btn">delete</button></a>-->
+<!--                <a href="/doedit/{{board_id}}"><button class="edit_btn" id="edit-btn">edit</button></a>-->
+                <form class="delete-form disp_inline" action="/dodelete/{{board_id}}" method="get">
+                    <button class="delete_btn" id="delete-btn">delete</button>
+                </form>
+                <form class="edit_form disp_inline" action="/doedit/{{board_id}}" method="get">
+                    <button class="edit_btn" id="edit-btn">edit</button>
+                </form>
             </div>
         {{/board}}
     </section>
