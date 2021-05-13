@@ -37,7 +37,20 @@
             {{/boardList}}
             </tbody>
         </table>
+        <div>
+            {{#pageList}}
+            <span>
+                <a href="/board?page={{.}}">{{.}}</a>
+            </span>
+            {{/pageList}}
+        </div>
         <a href="/post">추가하기</a>
+        <form action="/board/search" method="get">
+            <div>
+                <input name="keyword" type="text" placeholder="제목으로 검색">
+            </div>
+            <button>검색</button>
+        </form>
     </section>
 </main>
 {{>layout/footer}}

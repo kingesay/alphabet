@@ -1,5 +1,6 @@
 package uhs.alphabet.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 public class TimeEntity {
     @CreatedDate
     @Column(updatable = false, name = "created_time")
-    private LocalDateTime created_time;
+    private LocalDateTime createdTime;
 
     @LastModifiedDate
     @Column(name = "modified_time")

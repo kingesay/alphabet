@@ -34,8 +34,17 @@ nav, main, section {
     font-family: Bazzi, sans-serif;
 }
 
+button, pre{
+    font-family: Bazzi, sans-serif;
+}
+
 nav, section, main {
     display: block;
+}
+
+pre{
+    /*pre 자동줄바꿈*/
+    white-space: pre-wrap;
 }
 
 html {
@@ -159,7 +168,7 @@ div.items {
 }
 
 .disp_inline{
-    display: inline-block
+    display: inline-block;
 }
 
 /*
@@ -174,20 +183,23 @@ div.items {
     width: 100%;
     box-sizing: border-box;
     border: 0px;
-    font-size: 16px;
+    font-size: 20px;
     background-color: white;
     background-repeat: no-repeat;
-    padding: 12px;
+    padding: 16px;
+    font-family: Bazzi, sans-serif;
 }
 
 .board_form_content{
     width:100%;
     border: 0px;
-    padding: 12px;
+    padding: 16px;
+    font-size: 16px;
     box-sizing: border-box;
     /*사이즈조절 없애기*/
     resize: none;
     overflow: auto;
+    font-family: Bazzi, sans-serif;
 }
 
 .board_form_content::-webkit-scrollbar {
@@ -213,21 +225,17 @@ thead > tr > th{
 }
 
 tbody > tr > th{
+    font-size:30px;
+}
+tbody > tr > td{
     font-size:20px;
 }
-
 td.name{
-    width:15%;
     padding-left:5%;
 }
 
 .board_tbl_num{
-    width:20%;
     min-width: 148px;
-}
-
-.board_tbl_title{
-    width:45%;
 }
 
 .board_tbl_date{
@@ -237,12 +245,14 @@ td.name{
     boardD
 */
 .boardD_title{
+    font-family: Bazzi, sans-serif;
     padding-top: 30px;
     margin: 12px;
     font-size: 50px;
 }
 
 .boardD_content{
+    font-family: Bazzi, sans-serif;
     /*글자밖으로 나가는거 막기*/
     word-wrap: break-word;
     margin: 12px;
@@ -267,29 +277,23 @@ td.name{
 */
 
 .delete_btn{
-    border:1px solid red;
-    background-color: white;
+    border:0px solid red;
+    border-radius: 3px;
+    background-color: #FFCCCC;
     color: red;
     width:50px;
     height: 30px;
-}
-
-.delete_btn:hover{
-    background-color: red;
-    color: white;
+    cursor: pointer;
 }
 
 .edit_btn{
-    border:1px solid black;
-    background-color: white;
+    border:0px solid black;
+    border-radius: 3px;
+    background-color: #CCD1FF;
     color:black;
     width:50px;
     height: 30px;
-}
-
-.edit_btn:hover{
-    background-color: black;
-    color: white;
+    cursor: pointer;
 }
 
 /*

@@ -102,9 +102,20 @@ public class IndexController {
     }
 
     @GetMapping("/board")
-    public String list(Model model) {
-        List<BoardDto> boardList = boardService.getBoardList();
-
+    public String list(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
+        List<BoardDto> boardList = boardService.getBoardList(pageNum);
+        Integer[] pageList = boardService.getPageList(pageNum);
+        int count = 0;
+        for (Integer tmp : pageList) {
+            if (tmp != null) count++;
+        }
+        if (count != 5) {
+            pageList = new Integer[count];
+            int idx = 1;
+            for (int i = 0; i < count; i++)
+                pageList[i] = idx++;
+        }
+        model.addAttribute("pageList", pageList);
         model.addAttribute("boardList", boardList);
         return "board";
     }
@@ -115,6 +126,13 @@ public class IndexController {
         model.addAttribute("board", boardDto);
 
         return "boardDetail";
+    }
+
+    @GetMapping("/board/search")
+    public String search(@RequestParam(value = "keyword") String keyword, Model model) {
+        List<BoardDto> boardList = boardService.searchPosts(keyword);
+        model.addAttribute("boardList", boardList);
+        return "/board";
     }
 
     @RestController
