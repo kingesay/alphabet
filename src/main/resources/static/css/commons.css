@@ -15,7 +15,7 @@ backward {
     --NavHeight: 50px; /* fontsize+paddingtop */
     --PaddingContent: 70px; /* NavHeight+paddingtop */
 
-    --HalfNavHeight: 25px;
+    --HalfNavHeight: 1em;
     --HalfItemHeight: 35px;
     --HalfLogoHight: 20px;
     --HalfNavFontsize: 15px;
@@ -102,6 +102,15 @@ a {
     font-size: 30px;
 }
 
+.nav_ham{
+    display: none;
+    font-size: 30px;
+}
+
+.nav_side{
+    display: none;
+}
+
 .logo {
     alignment: left;
     width: 40px;
@@ -138,16 +147,10 @@ a {
     /*중앙정렬*/
     margin: 0 auto;
 }
-스크롤바 투명으로 만들기
-.contents::-webkit-scrollbar {
-    display: none;
-}
 
 div.items {
     padding-top: 10px;
     width: 100%;
-    height: auto;
-    float: left;
 }
 
 .item_img {
@@ -325,7 +328,7 @@ td.name{
     responsive web
 */
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 798px) {
     .foot {
         height: auto;
     }
@@ -339,21 +342,66 @@ td.name{
         color: white;
     }
     .navigation {
-        height: var(--HalfNavHeight);
+        height:2em
+        /*height: var(--HalfNavHeight);*/
     }
+
     .nav_item {
-        font-size: 1.0em;
+        display: none;
     }
+
+    .nav_ham{
+        display: block;
+        font-size: 1.5em;
+    }
+
+    .nav_side {
+        display: block;
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: #78b9d3;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .nav_side a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .nav_side a:hover {
+        color: #f1f1f1;
+    }
+
+    .nav_side .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+
     .logo {
         /*height: var(--HalfLogoHight);*/
-        height: 1.0em;
+        height: 1.5em;
+    }
+    .nav_item_logo{
+        float: left;
     }
     .contents {
         width: auto;
-        padding: 1em;
+        padding: 1em 1em 5em 1em;
         height: 800px;
         font-size: 1.5em;
-        overflow-x: hidden;
     }
 }
 
