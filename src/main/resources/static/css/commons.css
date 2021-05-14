@@ -55,7 +55,7 @@ html {
 
 .foot {
     opacity: 1;
-    background: black;
+    background: linear-gradient( to right, #a3e4ff, #78b9d3 );
     position: absolute;
     left: 0;
     bottom: 0;
@@ -84,7 +84,7 @@ a {
 */
 
 .navigation {
-    background: black;
+    background: linear-gradient( to right, #a3e4ff, #78b9d3 );
     opacity: 1;
     position: fixed;
     padding: 10px;
@@ -108,9 +108,19 @@ a {
     height: var(--LogoHight);
 }
 
-
 .nav_item_logo {
     color: white;
+}
+
+.float_right{
+    float: right;
+}
+
+.page{
+    padding-top: 10px;
+    text-align: center;
+    font-size: 20px;
+    letter-spacing:5px;
 }
 
 /*

@@ -6,6 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 import lombok.RequiredArgsConstructor;
@@ -96,8 +97,8 @@ public class BoardService {
         return boardRepository.count();
     }
 
-    public Integer[] getPageList(Integer curPageNum) {
-        Integer[] pageList = new Integer[BLOCK_PAGE_NUM_COUNT];
+    public ArrayList<Integer> getPageList(Integer curPageNum) {
+        ArrayList<Integer> pageList = new ArrayList<Integer>();
         // 총 게시글 갯수
         Double postsTotalCount = Double.valueOf(this.getBoardCount());
 
@@ -114,7 +115,8 @@ public class BoardService {
 
         // 페이지 번호 할당
         for (int val = curPageNum, idx = 0; val <= blockLastPageNum; val++, idx++) {
-            pageList[idx] = val;
+            if (idx>5) break;
+            pageList.add(val);
         }
 
         return pageList;

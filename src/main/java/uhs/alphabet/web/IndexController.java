@@ -104,18 +104,19 @@ public class IndexController {
     @GetMapping("/board")
     public String list(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
         List<BoardDto> boardList = boardService.getBoardList(pageNum);
-        Integer[] pageList = boardService.getPageList(pageNum);
-        int count = 0;
-        for (Integer tmp : pageList) {
-            if (tmp != null) count++;
-        }
-        if (count != 5) {
-            pageList = new Integer[count];
-            int idx = 1;
-            for (int i = 0; i < count; i++)
-                pageList[i] = idx++;
-        }
-        model.addAttribute("pageList", pageList);
+        ArrayList<Integer> pageList2 = boardService.getPageList(pageNum);
+//        Integer[] pageList = boardService.getPageList(pageNum);
+//        int count = 0;
+//        for (Integer tmp : pageList) {
+//            if (tmp != null) count++;
+//        }
+//        if (count != 5) {
+//            pageList = new Integer[count];
+//            int idx = 1;
+//            for (int i = 0; i < count; i++)
+//                pageList[i] = idx++;
+//        }
+        model.addAttribute("pageList", pageList2);
         model.addAttribute("boardList", boardList);
         return "board";
     }
