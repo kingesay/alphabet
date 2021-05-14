@@ -6,12 +6,15 @@ import java.time.LocalDateTime;
 import uhs.alphabet.domain.entity.BoardEntity;
 import uhs.alphabet.domain.entity.PersonEntity;
 
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 public class BoardDto {
     private Long board_id;
+    @NotNull
     private String title;
     private String content;
     private String pw;

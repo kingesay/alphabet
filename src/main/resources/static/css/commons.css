@@ -151,12 +151,10 @@ div.items {
 }
 
 .item_img {
-    height: var(--ItemHeight);
     width: 30%;
 }
 
 .item_text {
-    height: var(--ItemHeight);
     font-size: var(--ItemTextSZ);
     width: 70%;
 }
@@ -179,6 +177,11 @@ div.items {
 
 .disp_inline{
     display: inline-block;
+}
+
+.svg{
+    width: 80%;
+    margin: 0 auto;
 }
 
 /*
@@ -344,12 +347,6 @@ td.name{
     .logo {
         /*height: var(--HalfLogoHight);*/
         height: 1.0em;
-    }
-    .item_img {
-        height: var(--HalfItemHeight);
-    }
-    .item_text {
-        height: var(--HalfItemHeight);
     }
     .contents {
         width: auto;

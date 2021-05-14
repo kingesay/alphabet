@@ -105,17 +105,6 @@ public class IndexController {
     public String list(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
         List<BoardDto> boardList = boardService.getBoardList(pageNum);
         ArrayList<Integer> pageList2 = boardService.getPageList(pageNum);
-//        Integer[] pageList = boardService.getPageList(pageNum);
-//        int count = 0;
-//        for (Integer tmp : pageList) {
-//            if (tmp != null) count++;
-//        }
-//        if (count != 5) {
-//            pageList = new Integer[count];
-//            int idx = 1;
-//            for (int i = 0; i < count; i++)
-//                pageList[i] = idx++;
-//        }
         model.addAttribute("pageList", pageList2);
         model.addAttribute("boardList", boardList);
         return "board";
@@ -190,7 +179,7 @@ public class IndexController {
                     "      <stop stop-color=\"#FF0000\" offset=\"0%\"/>\n" +
                     "      <stop stop-color=\"#FF9900\" offset=\"33%\"/>\n" +
                     "      <stop stop-color=\"#CC33FF\" offset=\"66%\"/>\n" +
-                    "      <stop stop-color=\"#00FF33\" offset=\"100%\"/> \n" +
+                    "      <stop stop-color=\"#ff54dd\" offset=\"100%\"/> \n" +
                     "    </linearGradient>\n" +
                     "  </defs>\n" +
                     "<g>\n" +
