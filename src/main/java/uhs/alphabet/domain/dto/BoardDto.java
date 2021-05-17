@@ -6,7 +6,9 @@ import java.time.LocalDateTime;
 import uhs.alphabet.domain.entity.BoardEntity;
 import uhs.alphabet.domain.entity.PersonEntity;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Getter
 @Setter
@@ -14,12 +16,15 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class BoardDto {
     private Long board_id;
-    @NotNull
+    @NotBlank
     private String title;
+    @NotBlank
     private String content;
+    @NotBlank
+    @Size(min = 4, max = 6)
     private String pw;
     private int count;
-    private LocalDateTime created_time;
+    private String created_time;
     private LocalDateTime modified_time;
 
     public BoardEntity toEntity() {
@@ -35,7 +40,7 @@ public class BoardDto {
     }
 
     @Builder
-    public BoardDto(Long board_id, String title, String content, String pw, int count, LocalDateTime created_time, LocalDateTime modified_time) {
+    public BoardDto(Long board_id, String title, String content, String pw, int count, String created_time, LocalDateTime modified_time) {
         this.board_id = board_id;
         this.title = title;
         this.content = content;

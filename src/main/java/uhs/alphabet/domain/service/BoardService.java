@@ -7,6 +7,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Array;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import lombok.RequiredArgsConstructor;
@@ -25,13 +30,16 @@ public class BoardService {
     private static final int PAGE_POST_COUNT = 4;       // 한 페이지에 존재하는 게시글 수
 
     private BoardDto convertEntityToDto(BoardEntity boardEntity) {
+        LocalDateTime time = boardEntity.getCreatedTime();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formatDateTime = time.format(formatter);
         return BoardDto.builder()
                 .board_id(boardEntity.getBoard_id())
                 .title(boardEntity.getTitle())
                 .content(boardEntity.getContent())
                 .pw(boardEntity.getPw())
                 .count(boardEntity.getCount())
-                .created_time(boardEntity.getCreatedTime())
+                .created_time(formatDateTime)
                 .modified_time(boardEntity.getModified_time())
                 .build();
     }
@@ -58,13 +66,16 @@ public class BoardService {
     public BoardDto getBoard(Long id) {
         Optional<BoardEntity> boardEntityWrapper = boardRepository.findById(id);
         BoardEntity boardEntity = boardEntityWrapper.get();
+        LocalDateTime time = boardEntity.getCreatedTime();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formatDateTime = time.format(formatter);
         BoardDto boardDto = BoardDto.builder()
                 .board_id(boardEntity.getBoard_id())
                 .title(boardEntity.getTitle())
                 .content(boardEntity.getContent())
                 .pw(boardEntity.getPw())
                 .count(boardEntity.getCount())
-                .created_time(boardEntity.getCreatedTime())
+                .created_time(formatDateTime)
                 .modified_time(boardEntity.getModified_time())
                 .build();
 

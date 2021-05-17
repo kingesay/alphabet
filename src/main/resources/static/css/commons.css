@@ -102,6 +102,10 @@ a {
     font-size: 30px;
 }
 
+.nav_home{
+    display: none;
+}
+
 .nav_ham{
     display: none;
     font-size: 30px;
@@ -257,6 +261,11 @@ td.name{
 .board_tbl_date{
     min-width: 144px;
 }
+
+.board_ul_phone{
+    display: none;
+}
+
 /*
     boardD
 */
@@ -341,6 +350,15 @@ td.name{
         font-size: 0.7em;
         color: white;
     }
+
+    .item_text{
+        width: 100%;
+    }
+
+    ul li{
+        padding: 0 1em 0 0;
+    }
+
     .navigation {
         height:2em
         /*height: var(--HalfNavHeight);*/
@@ -348,6 +366,12 @@ td.name{
 
     .nav_item {
         display: none;
+    }
+
+    .nav_home{
+        display: block;
+        font-size: 1.5em;
+        float: left;
     }
 
     .nav_ham{
@@ -389,19 +413,52 @@ td.name{
         margin-left: 50px;
     }
 
+    .board_tbl_monitor{
+        display: none;
+    }
+
+    .board_ul_phone{
+        display: block;
+        padding-top: 1em;
+        text-align: left;
+    }
+
+    .board_li_phone{
+        display: inline-block;
+        width: 100%;
+        padding: 1em 0 1em 0;
+        border-bottom: 1px solid gray;
+        overflow: hidden;
+    }
+
+    .board_div_phone{
+        font-size: 30px;
+        white-space:nowrap;
+    }
+
+    .edit_input{
+        width: 30%;
+    }
 
     .logo {
         /*height: var(--HalfLogoHight);*/
         height: 1.5em;
     }
-    .nav_item_logo{
-        float: left;
-    }
+
     .contents {
         width: auto;
         padding: 1em 1em 5em 1em;
         height: 800px;
         font-size: 1.5em;
+    }
+
+    .item_text{
+        font-size: 1.5em;
+    }
+
+    .slide{
+        max-width: 2400px;
+        padding-top: 1em;
     }
 }
 

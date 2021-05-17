@@ -1,7 +1,7 @@
 {{>layout/header}}
 <main class="contents">
     <section>
-        <table>
+        <table class="board_tbl_monitor">
             <colgroup>
                 <col width="20%">
                 <col width="*">
@@ -9,7 +9,7 @@
             </colgroup>
             <thead class="thead-strong">
             <tr>
-                <th class="board_tbl_num">게시글 번호</th>
+                <th class="board_tbl_num">NO</th>
                 <th class="board_tbl_title">제목</th>
                 <th class="board_tbl_date">최종수정일</th>
             </tr>
@@ -28,10 +28,23 @@
             {{/boardList}}
             </tbody>
         </table>
+        <ul class="board_ul_phone">
+            {{#boardList}}
+                <li class="board_li_phone">
+                    <a href="/board/{{& board_id }}">
+                        <div class="board_div_phone">
+                            {{title}}
+                        </div>
+                    </a>
+                    <br>
+                    {{created_time}}
+                </li>
+            {{/boardList}}
+        </ul>
         <a class="float_right" href="/post">추가하기</a>
         <form action="/board/search" method="get">
             <div>
-                <input name="keyword" type="text" placeholder="제목으로 검색">
+                <input class="edit_input" name="keyword" type="text" placeholder="제목으로 검색">
                 <button class="edit_btn">검색</button>
             </div>
         </form>

@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -13,6 +14,7 @@ import uhs.alphabet.domain.dto.PersonDto;
 import uhs.alphabet.domain.service.BoardService;
 import uhs.alphabet.domain.service.PersonService;
 
+import javax.validation.Valid;
 import java.util.*;
 
 @RequiredArgsConstructor
@@ -52,7 +54,8 @@ public class IndexController {
     public String post() { return "post"; }
 
     @PostMapping("/post")
-    public String post(BoardDto boardDto) {
+    public String post(@Valid BoardDto boardDto, Errors errors) {
+        if (errors.hasErrors()) return "redirect:/board";
         boardService.saveBoard(boardDto);
         return "redirect:/board";
     }
@@ -72,7 +75,8 @@ public class IndexController {
     }
 
     @PutMapping("/post/edit/{no}")
-    public String update(BoardDto boardDto) {
+    public String update(@Valid BoardDto boardDto, Errors errors) {
+        if (errors.hasErrors()) return "redirect:/board";
         boardService.saveBoard(boardDto);
         return "redirect:/board";
     }
