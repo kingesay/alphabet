@@ -186,6 +186,7 @@ public class IndexController {
                     "      <stop stop-color=\"#ff54dd\" offset=\"100%\"/> \n" +
                     "    </linearGradient>\n" +
                     "  </defs>\n" +
+                    "  <rect width=\"350\" height=\"131\" fill=\"white\" stroke=\"#111111\" rx=\"20\" ry=\"20\" stroke-width=\"3\" x=\"1\" y=\"1\"></rect>\n" +
                     "<g>\n" +
                     "\t<rect width=\"30\" height=\"40\" fill=\"#c4e693\" stroke-width=\"2\" stroke=\"#111111\" x=\"10\" y=\"15\" opacity=\"0\">\n" +
                     "\t  <animate id=\"animation1\" attributeName=\"opacity\" values=\"0;1\" dur=\"0.4s\" fill=\"freeze\"/>\n" +
@@ -348,7 +349,6 @@ public class IndexController {
                     "\t  <tspan id=\"handle\" dy=\"26\" x=\"210.0109466053608\">"+handle+"</tspan>\n" +
                     "    <animate id=\"animation13\" attributeName=\"opacity\" values=\"0;1\" dur=\"0.5s\" fill=\"freeze\" begin=\"line21.end\"/>\n" +
                     "  </text>\n" +
-                    "  <rect width=\"350\" height=\"131\" fill=\"none\" stroke=\"#111111\" rx=\"20\" ry=\"20\" stroke-width=\"3\" x=\"1\" y=\"1\"></rect>\n" +
                     "</svg>", HttpStatus.OK);
         }
 
