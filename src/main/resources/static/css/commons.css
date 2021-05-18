@@ -163,7 +163,6 @@ div.items {
 
 .item_text {
     font-size: var(--ItemTextSZ);
-    width: 70%;
 }
 
 .greeting {
@@ -449,7 +448,7 @@ td.name{
     .contents {
         width: auto;
         padding: 1em 1em 5em 1em;
-        height: 800px;
+        min-height: 800px;
         font-size: 1.5em;
     }
 
