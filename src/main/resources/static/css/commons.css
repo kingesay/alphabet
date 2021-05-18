@@ -163,7 +163,6 @@ div.items {
 
 .item_text {
     font-size: var(--ItemTextSZ);
-    width: 70%;
 }
 
 .greeting {

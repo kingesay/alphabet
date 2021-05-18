@@ -29,6 +29,11 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/bob")
+    public String bob() {
+        return "bob";
+    }
+
     @GetMapping("/introduction")
     public String introduction() {
         return "introduction";
