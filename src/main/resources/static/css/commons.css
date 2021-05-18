@@ -31,11 +31,11 @@ nav, main, section {
     font-size: 100%;
     vertical-align: baseline;
     background: transparent;
-    font-family: Bazzi, sans-serif;
+    font-family: CookieRunOTF-Bold, sans-serif;
 }
 
 button, pre{
-    font-family: Bazzi, sans-serif;
+    font-family: CookieRunOTF-Bold, sans-serif;
 }
 
 nav, section, main {
@@ -207,7 +207,7 @@ div.items {
     background-color: white;
     background-repeat: no-repeat;
     padding: 16px;
-    font-family: Bazzi, sans-serif;
+    font-family: CookieRunOTF-Bold, sans-serif;
 }
 
 .board_form_content{
@@ -219,7 +219,7 @@ div.items {
     /*사이즈조절 없애기*/
     resize: none;
     overflow: auto;
-    font-family: Bazzi, sans-serif;
+    font-family: CookieRunOTF-Bold, sans-serif;
 }
 
 .board_form_content::-webkit-scrollbar {
@@ -270,14 +270,14 @@ td.name{
     boardD
 */
 .boardD_title{
-    font-family: Bazzi, sans-serif;
+    font-family: CookieRunOTF-Bold, sans-serif;
     padding-top: 30px;
     margin: 12px;
     font-size: 50px;
 }
 
 .boardD_content{
-    font-family: Bazzi, sans-serif;
+    font-family: CookieRunOTF-Bold, sans-serif;
     /*글자밖으로 나가는거 막기*/
     word-wrap: break-word;
     margin: 12px;
