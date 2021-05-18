@@ -46,7 +46,7 @@ public class BoardService {
 
     @Transactional
     public List<BoardDto> getBoardList(Integer pageNum) {
-        Page<BoardEntity> page = boardRepository.findAll(PageRequest.of(pageNum-1, PAGE_POST_COUNT, Sort.by(Sort.Direction.ASC, "createdTime")));
+        Page<BoardEntity> page = boardRepository.findAll(PageRequest.of(pageNum-1, PAGE_POST_COUNT, Sort.by(Sort.Direction.DESC, "createdTime")));
         List<BoardEntity> boardEntities = page.getContent();
         List<BoardDto> boardDtos = new ArrayList<>();
         if (boardEntities.isEmpty()) return boardDtos;
