@@ -90,6 +90,7 @@ a {
     padding: 10px;
     height: var(--NavHeight);
     width: 100%;
+    z-index: 1000;
 }
 
 .nav_items{
@@ -364,12 +365,23 @@ td.name{
     font-family: Arial"
 }
 
-.developer_rainbow{
+.developer_rainbowt{
     text-align: center;
+}
+
+.developer_rainbow{
+    position:relative;
+    left:-110%;
+    width:380%;
+    z-index: 1;
 }
 
 .developer_img{
     width: 90%;
+}
+
+.developer_main{
+    text-align: center;
 }
 /*
     footer
