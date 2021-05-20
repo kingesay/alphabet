@@ -159,7 +159,7 @@ div.items {
 }
 
 .item_img {
-    width: 30%;
+    width: 80%;
 }
 
 .item_text {
@@ -516,7 +516,11 @@ td.name{
     }
 
     .item_text{
-        font-size: 1.5em;
+        font-size: 1.3em;
+    }
+
+    .item_img {
+        width: 100%;
     }
 
     .slide{
