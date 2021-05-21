@@ -53,6 +53,28 @@ html {
     margin: 0 auto;
 }
 
+progress{
+    background-color: gray;
+    border: 0;
+    width: 100%;
+    height: 30px;
+}
+
+progress::-webkit-progress-bar {
+	margin:0 auto;
+	background-color: #CCC;
+	box-shadow:0px 0px 6px #777 inset;
+}
+
+progress::-webkit-progress-value {
+	background: green;
+	box-shadow:0px 0px 6px #777 inset;
+}
+
+progress:after {
+	content: attr(value) '%';
+}
+
 .foot {
     opacity: 1;
     background: linear-gradient( to right, #a3e4ff, #78b9d3 );
@@ -399,7 +421,7 @@ td.name{
     responsive web
 */
 
-@media only screen and (max-width: 798px) {
+@media only screen and (max-width: 1024px) {
     .foot {
         height: auto;
     }
