@@ -15,8 +15,6 @@
 
 <script>
     var myIndex = 0;
-    const beginning = new Date(2021, 2, 2, 12, 0, 0, 0);
-    const end = new Date(2021, 5, 21, 12, 0, 0, 0);
     carousel();
     function carousel() {
         var i;
@@ -36,6 +34,10 @@
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
+</script>
+<script>
+    const beginning = new Date(2021, 2, 2, 12, 0, 0, 0);
+    const end = new Date(2021, 5, 21, 12, 0, 0, 0);
     
     function getDayBetween(date1, date2) {
         const a = new Date(date1).getTime(), b = new Date(date2).getTime();
