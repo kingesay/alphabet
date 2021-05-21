@@ -58,6 +58,9 @@ public class IndexController {
     @GetMapping("/post")
     public String post() { return "post"; }
 
+    @GetMapping("/howtouse")
+    public String howtouse() { return "howtouse"; }
+
     @PostMapping("/post")
     public String post(@Valid BoardDto boardDto, Errors errors) {
         if (errors.hasErrors()) return "redirect:/board";
