@@ -26,6 +26,7 @@ public class BoardDto {
     private int count;
     private String created_time;
     private LocalDateTime modified_time;
+    private boolean visible;
 
     public BoardEntity toEntity() {
         BoardEntity boardEntity = BoardEntity.builder()

@@ -30,6 +30,8 @@ public class BoardEntity extends TimeEntity {
     @Column
     private int count;
 
+    @Column
+    private boolean visible;
 
     @Builder
     public BoardEntity(Long board_id, String title, String content, String pw, int count) {

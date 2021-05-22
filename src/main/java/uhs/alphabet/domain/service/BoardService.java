@@ -51,7 +51,7 @@ public class BoardService {
         List<BoardDto> boardDtos = new ArrayList<>();
         if (boardEntities.isEmpty()) return boardDtos;
         for (BoardEntity boardEntity : boardEntities) {
-            boardDtos.add(this.convertEntityToDto(boardEntity));
+            if (boardEntity.isVisible()) boardDtos.add(this.convertEntityToDto(boardEntity));
         }
 
         return boardDtos;
