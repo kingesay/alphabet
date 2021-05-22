@@ -1,5 +1,6 @@
 package uhs.alphabet.domain.repository;
 
+import org.springframework.data.repository.query.Param;
 import uhs.alphabet.domain.dto.BoardDto;
 import uhs.alphabet.domain.entity.BoardEntity;
 import uhs.alphabet.domain.entity.PersonEntity;
@@ -9,4 +10,5 @@ import java.util.List;
 
 public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
     List<BoardEntity> findByTitleContaining(String key);
+
 }

@@ -46,7 +46,7 @@ public class BoardService {
 
     @Transactional
     public List<BoardDto> getBoardList(Integer pageNum) {
-        Page<BoardEntity> page = boardRepository.findAll(PageRequest.of(pageNum-1, PAGE_POST_COUNT, Sort.by(Sort.Direction.DESC, "createdTime")));
+        Page<BoardEntity> page = boardRepository.findAll(PageRequest.of(pageNum-1, PAGE_POST_COUNT, Sort.by(Sort.Direction.DESC, "visible", "createdTime")));
         List<BoardEntity> boardEntities = page.getContent();
         List<BoardDto> boardDtos = new ArrayList<>();
         if (boardEntities.isEmpty()) return boardDtos;
@@ -111,7 +111,13 @@ public class BoardService {
     public ArrayList<Integer> getPageList(Integer curPageNum) {
         ArrayList<Integer> pageList = new ArrayList<Integer>();
         // 총 게시글 갯수
-        Double postsTotalCount = Double.valueOf(this.getBoardCount());
+        List<BoardEntity> page = boardRepository.findAll();
+        int cnt = 0;
+        for (BoardEntity tmp : page) {
+            if (tmp.isVisible()) cnt++;
+        }
+        Double postsTotalCount = Double.valueOf(cnt);
+//        Double postsTotalCount = Double.valueOf(this.getBoardCount());
 
         // 총 게시글 기준으로 계산한 마지막 페이지 번호 계산 (올림으로 계산)
         Integer totalLastPageNum = (int)(Math.ceil((postsTotalCount/PAGE_POST_COUNT)));
