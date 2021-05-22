@@ -59,7 +59,7 @@ public class IndexController {
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
         }
-
+        ip = request.getRemoteAddr();
         return ip;
     }
     @GetMapping("/")
