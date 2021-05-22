@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -14,8 +16,10 @@ import uhs.alphabet.domain.dto.PersonDto;
 import uhs.alphabet.domain.service.BoardService;
 import uhs.alphabet.domain.service.PersonService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.*;
+import java.util.logging.Logger;
 
 @RequiredArgsConstructor
 @Controller
@@ -23,7 +27,41 @@ public class IndexController {
 
     private final PersonService personService;
     private  final BoardService boardService;
+    public String getUserIp() throws Exception {
 
+        String ip = null;
+        HttpServletRequest request =
+                ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+
+        ip = request.getHeader("X-Forwarded-For");
+
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("WL-Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("HTTP_CLIENT_IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("HTTP_X_FORWARDED_FOR");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("X-Real-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("X-RealIP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("REMOTE_ADDR");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getRemoteAddr();
+        }
+
+        return ip;
+    }
     @GetMapping("/")
     public String index() {
         return "index";
@@ -62,8 +100,11 @@ public class IndexController {
     public String howtouse() { return "howtouse"; }
 
     @PostMapping("/post")
-    public String post(@Valid BoardDto boardDto, Errors errors) {
+    public String post(@Valid BoardDto boardDto, Errors errors) throws Exception {
         if (errors.hasErrors()) return "redirect:/board";
+        String ip = getUserIp();
+        boardDto.setIp(ip);
+//        System.out.println(ip);
         boardService.saveBoard(boardDto);
         return "redirect:/board";
     }
@@ -126,7 +167,8 @@ public class IndexController {
     public String detail(@PathVariable("no") Long no, Model model) {
         BoardDto boardDto = boardService.getBoard(no);
         model.addAttribute("board", boardDto);
-
+        String ip = boardDto.getIp();
+//        System.out.println(ip);
         return "boardDetail";
     }
 

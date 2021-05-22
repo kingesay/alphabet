@@ -33,13 +33,17 @@ public class BoardEntity extends TimeEntity {
     @Column
     private boolean visible;
 
+    @Column
+    private String ip;
+
     @Builder
-    public BoardEntity(Long board_id, String title, String content, String pw, int count) {
+    public BoardEntity(Long board_id, String title, String content, String pw, int count, String ip, boolean visible) {
         this.board_id = board_id;
         this.title = title;
         this.content = content;
         this.pw = pw;
         this.count = count;
+        this.ip = ip;
     }
 
 

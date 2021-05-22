@@ -75,6 +75,7 @@ public class BoardService {
                 .content(boardEntity.getContent())
                 .pw(boardEntity.getPw())
                 .count(boardEntity.getCount())
+                .ip(boardEntity.getIp())
                 .created_time(formatDateTime)
                 .modified_time(boardEntity.getModified_time())
                 .build();
