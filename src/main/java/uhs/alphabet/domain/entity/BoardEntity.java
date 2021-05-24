@@ -44,6 +44,7 @@ public class BoardEntity extends TimeEntity {
         this.pw = pw;
         this.count = count;
         this.ip = ip;
+        this.visible = visible;
     }
 
 

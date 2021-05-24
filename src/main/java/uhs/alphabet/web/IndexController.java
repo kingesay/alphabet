@@ -92,6 +92,11 @@ public class IndexController {
         if (errors.hasErrors()) return "redirect:/board";
         String ip = getUserIp();
         boardDto.setIp(ip);
+        if (boardDto.getPw().equals("hjfy")) {
+            boardDto.setVisible(true);
+            System.out.println("true");
+        }
+        else boardDto.setVisible(false);
 //        System.out.println(ip);
         boardService.saveBoard(boardDto);
         return "redirect:/board";
