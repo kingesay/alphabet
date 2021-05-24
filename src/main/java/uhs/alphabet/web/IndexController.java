@@ -161,6 +161,10 @@ public class IndexController {
         BoardDto boardDto = boardService.getBoard(no);
         model.addAttribute("board", boardDto);
         String ip = boardDto.getIp();
+        if (!boardDto.isVisible()) {
+            boardDto.setTitle("가려진 게시물");
+            boardDto.setContent("해당 게시글은 가려졌습니다 문제가 있는 경우 관리자에게 문의하세요");
+        }
 //        System.out.println(ip);
         return "boardDetail";
     }
