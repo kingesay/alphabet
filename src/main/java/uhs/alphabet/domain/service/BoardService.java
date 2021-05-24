@@ -70,16 +70,7 @@ public class BoardService {
         LocalDateTime time = boardEntity.getCreatedTime();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formatDateTime = time.format(formatter);
-        BoardDto boardDto = BoardDto.builder()
-                .board_id(boardEntity.getBoard_id())
-                .title(boardEntity.getTitle())
-                .content(boardEntity.getContent())
-                .pw(boardEntity.getPw())
-                .count(boardEntity.getCount())
-                .ip(boardEntity.getIp())
-                .created_time(formatDateTime)
-                .modified_time(boardEntity.getModified_time())
-                .build();
+        BoardDto boardDto = this.convertEntityToDto(boardEntity);
 
         return boardDto;
     }
