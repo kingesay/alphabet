@@ -114,6 +114,7 @@ public class IndexController {
     @PutMapping("/post/edit/{no}")
     public String update(@Valid BoardDto boardDto, Errors errors) {
         if (errors.hasErrors()) return "redirect:/board";
+        boardDto.setVisible(true);
         boardService.saveBoard(boardDto);
         return "redirect:/board";
     }
