@@ -92,7 +92,7 @@ public class IndexController {
         if (errors.hasErrors()) return "redirect:/board";
         String ip = getUserIp();
         boardDto.setIp(ip);
-
+        boardDto.setVisible(true);
         boardService.saveBoard(boardDto);
         return "redirect:/board";
     }
