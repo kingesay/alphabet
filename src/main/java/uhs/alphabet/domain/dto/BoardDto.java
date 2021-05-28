@@ -28,6 +28,7 @@ public class BoardDto {
     private LocalDateTime modified_time;
     private boolean visible;
     private String ip;
+    private String writer;
 
     public BoardEntity toEntity() {
         BoardEntity boardEntity = BoardEntity.builder()
@@ -36,6 +37,7 @@ public class BoardDto {
                 .content(content)
                 .pw(pw)
                 .count(count)
+                .writer(writer)
                 .ip(ip)
                 .visible(visible)
                 .build();
@@ -44,7 +46,7 @@ public class BoardDto {
     }
 
     @Builder
-    public BoardDto(Long board_id, String title, String content, String pw, int count, String ip, String created_time, LocalDateTime modified_time, boolean visible) {
+    public BoardDto(Long board_id, String title, String content, String pw, int count, String ip, String created_time, LocalDateTime modified_time, boolean visible, String writer) {
         this.board_id = board_id;
         this.title = title;
         this.content = content;
@@ -52,6 +54,7 @@ public class BoardDto {
         this.count = count;
         this.created_time = created_time;
         this.modified_time = modified_time;
+        this.writer = writer;
         this.ip = ip;
         this.visible = visible;
     }

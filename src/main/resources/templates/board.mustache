@@ -11,6 +11,7 @@
             <tr>
                 <th class="board_tbl_num">NO</th>
                 <th class="board_tbl_title">제목</th>
+                <th>작성자</th>
                 <th class="board_tbl_date">최종수정일</th>
             </tr>
             </thead>
@@ -23,6 +24,7 @@
                             {{title}}
                         </a>
                     </th>
+                    <td>{{writer}}</td>
                     <td class="over_hidden">{{created_time}}</td>
                 </tr>
             {{/boardList}}
@@ -36,6 +38,8 @@
                             {{title}}
                         </div>
                     </a>
+                    <br>
+                    {{writer}}
                     <br>
                     {{created_time}}
                 </li>

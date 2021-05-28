@@ -36,8 +36,11 @@ public class BoardEntity extends TimeEntity {
     @Column
     private String ip;
 
+    @Column
+    private String writer;
+
     @Builder
-    public BoardEntity(Long board_id, String title, String content, String pw, int count, String ip, boolean visible) {
+    public BoardEntity(Long board_id, String title, String content, String pw, int count, String ip, boolean visible, String writer) {
         this.board_id = board_id;
         this.title = title;
         this.content = content;
@@ -45,6 +48,7 @@ public class BoardEntity extends TimeEntity {
         this.count = count;
         this.ip = ip;
         this.visible = visible;
+        this.writer = writer;
     }
 
 

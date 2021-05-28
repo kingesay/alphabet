@@ -40,6 +40,7 @@ public class BoardService {
                 .pw(boardEntity.getPw())
                 .count(boardEntity.getCount())
                 .visible(boardEntity.isVisible())
+                .writer(boardEntity.getWriter())
                 .created_time(formatDateTime)
                 .modified_time(boardEntity.getModified_time())
                 .build();

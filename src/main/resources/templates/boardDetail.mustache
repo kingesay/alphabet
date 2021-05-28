@@ -9,9 +9,10 @@
             <div class="boardD_content">
                 <pre>{{content}}</pre>
             </div>
+            <div>
+                작성자: {{writer}}
+            </div>
             <div class="disp_inline">
-<!--                <a href="/dodelete/{{board_id}}"><button class="delete_btn" id="delete-btn">delete</button></a>-->
-<!--                <a href="/doedit/{{board_id}}"><button class="edit_btn" id="edit-btn">edit</button></a>-->
                 <form class="delete-form disp_inline" action="/dodelete/{{board_id}}" method="get">
                     <button class="delete_btn" id="delete-btn">삭제</button>
                 </form>

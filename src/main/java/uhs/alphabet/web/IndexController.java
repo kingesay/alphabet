@@ -93,6 +93,13 @@ public class IndexController {
         String ip = getUserIp();
         boardDto.setIp(ip);
         boardDto.setVisible(true);
+        ArrayList<String> names = new ArrayList<>();
+        names.add("alphabet");
+        names.add("admin");
+        names.add("관리자");
+        for (String str:names) {
+            if (str.equals(boardDto.getWriter())) boardDto.setVisible(false);
+        }
         boardService.saveBoard(boardDto);
         return "redirect:/board";
     }
