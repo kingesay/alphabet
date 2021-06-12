@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@Setter
 @Entity
 @Table(name = "board")
 public class BoardEntity extends TimeEntity {

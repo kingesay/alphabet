@@ -29,7 +29,7 @@ public class BoardService {
     private static final int BLOCK_PAGE_NUM_COUNT = 5;  // 블럭에 존재하는 페이지 번호 수
     private static final int PAGE_POST_COUNT = 4;       // 한 페이지에 존재하는 게시글 수
 
-    private BoardDto convertEntityToDto(BoardEntity boardEntity) {
+    public BoardDto convertEntityToDto(BoardEntity boardEntity) {
         LocalDateTime time = boardEntity.getCreatedTime();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formatDateTime = time.format(formatter);
@@ -42,6 +42,7 @@ public class BoardService {
                 .visible(boardEntity.isVisible())
                 .writer(boardEntity.getWriter())
                 .created_time(formatDateTime)
+                .ip(boardEntity.getIp())
                 .modified_time(boardEntity.getModified_time())
                 .build();
     }
@@ -81,6 +82,11 @@ public class BoardService {
         Optional<BoardEntity> boardEntityOptional = boardRepository.findById(id);
         BoardEntity boardEntity = boardEntityOptional.get();
         if (boardEntity.getPw().toString().equals(pw)) boardRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void deletePostAll() {
+        boardRepository.deleteAll();
     }
 
     @Transactional
