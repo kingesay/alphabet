@@ -4,10 +4,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 import uhs.alphabet.domain.entity.BoardEntity;
-import uhs.alphabet.domain.entity.PersonEntity;
-
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter

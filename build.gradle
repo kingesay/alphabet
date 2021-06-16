@@ -3,6 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     id 'jacoco'
+    id "org.sonarqube" version "3.0"
 }
 
 group = 'UHS'
@@ -14,6 +15,12 @@ configurations {
         extendsFrom annotationProcessor
     }
 }
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+}
+test.finalizedBy jacocoTestReport
 
 repositories {
     mavenCentral()

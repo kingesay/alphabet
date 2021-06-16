@@ -1,28 +1,17 @@
-package uhs.alphabet.domain.entity;
+package uhs.alphabet.domain.repository;
 
 import org.junit.After;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Import;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import uhs.alphabet.domain.dto.BoardDto;
 import uhs.alphabet.domain.entity.BoardEntity;
 import uhs.alphabet.domain.entity.PersonEntity;
-import uhs.alphabet.domain.repository.BoardRepository;
-import uhs.alphabet.domain.repository.PersonRepository;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Optional;
 
 @SpringBootTest
-public class EntityTest {
+public class RepositoryTest {
 
     @Autowired
     private BoardRepository boardRepository;
@@ -40,8 +29,14 @@ public class EntityTest {
         boardRepository.deleteAll();
     }
 
+    /*
+    * saveBoard을 테스트합니다
+    */
     @Test
+    @DisplayName("saveBoard test 한번 저장")
     public void saveBoard() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         BoardEntity boardEntity = BoardEntity.builder()
                 .title("saveTestTitle")
                 .content("saveTestContent")
@@ -59,10 +54,11 @@ public class EntityTest {
                 .ip("ip")
                 .build()
         );
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
         List<BoardEntity> boardEntityWrapper = boardRepository.findByTitleContaining("saveTestTitle");
         BoardEntity boardEntityTest = boardEntityWrapper.get(0);
+
+        Assertions.assertEquals(1,boardEntityWrapper.size());
         Assertions.assertEquals(boardEntity.getTitle(), boardEntityTest.getTitle());
         Assertions.assertEquals(boardEntity.getContent(), boardEntityTest.getContent());
         Assertions.assertEquals(boardEntity.getPw(), boardEntityTest.getPw());
@@ -76,34 +72,24 @@ public class EntityTest {
     @Test
     public void deleteBoard() {
         boardRepository.save(BoardEntity.builder()
-                .title("deleteTestTitle1")
-                .content("deleteTestContent1")
+                .title("deleteTestTitle")
+                .content("deleteTestContent")
                 .pw("1234")
                 .visible(true)
                 .writer("writer1")
                 .ip("ip1")
                 .build()
         );
-        boardRepository.save(BoardEntity.builder()
-                .title("deleteTestTitle2")
-                .content("deleteTestContent2")
-                .pw("1234")
-                .visible(true)
-                .writer("writer2")
-                .ip("ip2")
-                .build()
-        );
         List<BoardEntity> boardEntities = boardRepository.findByTitleContaining("deleteTest");
         int sz = boardEntities.size();
-        Assertions.assertEquals(sz, 2);
-        BoardEntity boardEntity1 = boardEntities.get(0);
-        BoardEntity boardEntity2 = boardEntities.get(1);
+        Assertions.assertEquals(sz, 1);
 
-        boardRepository.deleteById(boardEntity1.getBoard_id());
+        BoardEntity boardEntity = boardEntities.get(0);
+        boardRepository.deleteById(boardEntity.getBoard_id());
 
         boardEntities = boardRepository.findByTitleContaining("deleteTest");
         sz = boardEntities.size();
-        Assertions.assertEquals(sz, 1);
+        Assertions.assertEquals(sz, 0);
     }
 
     @Test
@@ -144,23 +130,15 @@ public class EntityTest {
                 .name("name")
                 .build()
         );
-        personRepository.save(PersonEntity.builder()
-                .handle("handle")
-                .stunum("1234")
-                .rating(1700)
-                .name("name")
-                .build()
-        );
         List<PersonEntity> personEntities = personRepository.findByStunumContaining("1234");
         int sz = personEntities.size();
-        Assertions.assertEquals(sz, 2);
-        PersonEntity personEntity1 = personEntities.get(0);
-        PersonEntity personEntity2 = personEntities.get(1);
+        Assertions.assertEquals(sz, 1);
+        PersonEntity personEntity = personEntities.get(0);
 
-        personRepository.deleteById(personEntity1.getId());
+        personRepository.deleteById(personEntity.getId());
 
         personEntities = personRepository.findByStunumContaining("1234");
         sz = personEntities.size();
-        Assertions.assertEquals(sz, 1);
+        Assertions.assertEquals(sz, 0);
     }
 }

@@ -19,7 +19,6 @@ import uhs.alphabet.domain.service.PersonService;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.*;
-import java.util.logging.Logger;
 
 @RequiredArgsConstructor
 @Controller

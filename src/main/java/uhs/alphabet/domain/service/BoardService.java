@@ -1,21 +1,14 @@
 package uhs.alphabet.domain.service;
 
-import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.lang.reflect.Array;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import uhs.alphabet.domain.dto.BoardDto;
 import uhs.alphabet.domain.entity.BoardEntity;
@@ -29,7 +22,7 @@ public class BoardService {
     private static final int BLOCK_PAGE_NUM_COUNT = 5;  // 블럭에 존재하는 페이지 번호 수
     private static final int PAGE_POST_COUNT = 4;       // 한 페이지에 존재하는 게시글 수
 
-    public BoardDto convertEntityToDto(BoardEntity boardEntity) {
+    private BoardDto convertEntityToDto(BoardEntity boardEntity) {
         LocalDateTime time = boardEntity.getCreatedTime();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formatDateTime = time.format(formatter);
@@ -62,15 +55,29 @@ public class BoardService {
 
     @Transactional
     public Long saveBoard(BoardDto boardDto) {
+        if (boardDto.getTitle().equals("")) {
+            return -1L;
+        }
         return boardRepository.save(boardDto.toEntity()).getBoard_id();
     }
 
     @Transactional
     public BoardDto getBoard(Long id) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         Optional<BoardEntity> boardEntityWrapper = boardRepository.findById(id);
+        if (boardEntityWrapper.isEmpty()) {
+            BoardDto tmp = BoardDto.builder()
+                    .title("None")
+                    .content("None")
+                    .created_time(LocalDateTime.now().format(formatter))
+                    .writer("None")
+                    .board_id(-1L)
+                    .pw("1234")
+                    .build();
+            return tmp;
+        }
         BoardEntity boardEntity = boardEntityWrapper.get();
         LocalDateTime time = boardEntity.getCreatedTime();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formatDateTime = time.format(formatter);
         BoardDto boardDto = this.convertEntityToDto(boardEntity);
 

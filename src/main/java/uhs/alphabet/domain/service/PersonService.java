@@ -3,13 +3,11 @@ package uhs.alphabet.domain.service;
 import uhs.alphabet.domain.dto.PersonDto;
 import uhs.alphabet.domain.entity.PersonEntity;
 import uhs.alphabet.domain.repository.PersonRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
