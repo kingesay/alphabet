@@ -10,6 +10,7 @@ import java.util.*;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
+import uhs.alphabet.annotation.Timer;
 import uhs.alphabet.domain.dto.BoardDto;
 import uhs.alphabet.domain.entity.BoardEntity;
 import uhs.alphabet.domain.repository.BoardRepository;
@@ -41,6 +42,7 @@ public class BoardService {
     }
 
     @Transactional
+    @Timer
     public List<BoardDto> getBoardList(Integer pageNum) {
         Page<BoardEntity> page = boardRepository.findAll(PageRequest.of(pageNum-1, PAGE_POST_COUNT, Sort.by(Sort.Direction.DESC, "visible", "createdTime")));
         List<BoardEntity> boardEntities = page.getContent();
@@ -54,6 +56,7 @@ public class BoardService {
     }
 
     @Transactional
+    @Timer
     public Long saveBoard(BoardDto boardDto) {
         if (boardDto.getTitle().equals("")) {
             return -1L;
@@ -62,6 +65,7 @@ public class BoardService {
     }
 
     @Transactional
+    @Timer
     public BoardDto getBoard(Long id) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         Optional<BoardEntity> boardEntityWrapper = boardRepository.findById(id);
@@ -85,6 +89,7 @@ public class BoardService {
     }
 
     @Transactional
+    @Timer
     public void deletePost(Long id, String pw) {
         Optional<BoardEntity> boardEntityOptional = boardRepository.findById(id);
         if (!boardEntityOptional.isPresent()) return;
@@ -98,6 +103,7 @@ public class BoardService {
     }
 
     @Transactional
+    @Timer
     public List<BoardDto> searchPosts(String keyword) {
         List<BoardEntity> boardEntities = boardRepository.findByTitleContaining(keyword);
         List<BoardDto> boardDtos = new ArrayList<>();
@@ -112,6 +118,7 @@ public class BoardService {
     }
 
     @Transactional
+    @Timer
     public Long getBoardCount() {
         return boardRepository.count();
     }

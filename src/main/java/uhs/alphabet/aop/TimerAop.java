@@ -23,16 +23,16 @@ public class TimerAop {
     public void enableTimer() {}
 
     @Around("cut() && enableTimer()")
-    public void around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature) proceedingJoinPoint.getSignature();
         Method method = methodSignature.getMethod();
 
         Long before = System.currentTimeMillis();
         Object obj = proceedingJoinPoint.proceed();
         Long after = System.currentTimeMillis();
-
         Long res = after - before;
         Logger logger = LoggerFactory.getLogger(TimerAop.class);
         logger.info(method.getName()+" method takes "+res/1000+"sec");
+        return obj;
     }
 }

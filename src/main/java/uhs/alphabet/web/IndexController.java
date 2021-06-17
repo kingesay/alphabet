@@ -52,43 +52,45 @@ public class IndexController {
         return ip;
     }
     @GetMapping("/")
+    @Timer
     public String index() {
         return "index";
     }
-
+    @Timer
     @GetMapping("/bob")
     public String bob() {
         return "bob";
     }
-
+    @Timer
     @GetMapping("/introduction")
     public String introduction() {
         return "introduction";
     }
-
+    @Timer
     @GetMapping("/history")
     public String history() {
         return "history";
     }
-
+    @Timer
     @GetMapping("/contact")
     public String contact() {
         return "contact";
     }
-
+    @Timer
     @GetMapping("/mirror")
     public String mirror() { return "mirror"; }
-
+    @Timer
     @GetMapping("/journal")
     public String journal() { return "journal"; }
-
+    @Timer
     @GetMapping("/post")
     public String post() { return "post"; }
-
+    @Timer
     @GetMapping("/howtouse")
     public String howtouse() { return "howtouse"; }
 
     @PostMapping("/post")
+    @Timer
     public String post(@Valid BoardDto boardDto, Errors errors) throws Exception {
         if (errors.hasErrors()) return "redirect:/board";
         String ip = getUserIp();
@@ -106,12 +108,14 @@ public class IndexController {
     }
 
     @DeleteMapping("/post/{no}")
+    @Timer
     public String post(@PathVariable("no") Long no, String pw) {
         boardService.deletePost(no, pw);
         return "redirect:/board";
     }
 
     @GetMapping("/post/edit/{no}")
+    @Timer
     public String edit(@PathVariable("no") Long id, Model model, String pw) {
         BoardDto boardDto = boardService.getBoard(id);
         if (!boardDto.getPw().equals(pw)) return "redirect:/board";
@@ -120,6 +124,7 @@ public class IndexController {
     }
 
     @PutMapping("/post/edit/{no}")
+    @Timer
     public String update(@Valid BoardDto boardDto, Errors errors) {
         if (errors.hasErrors()) return "redirect:/board";
         boardDto.setVisible(true);
@@ -140,6 +145,7 @@ public class IndexController {
     }
 
     @GetMapping("/testPerson")
+    @Timer
     public String test(Model model) {
         PersonDto personDto;
         try {
@@ -152,6 +158,7 @@ public class IndexController {
     }
 
     @GetMapping("/board")
+    @Timer
     public String list(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
         List<BoardDto> boardList = boardService.getBoardList(pageNum);
         ArrayList<Integer> pageList2 = boardService.getPageList(pageNum);
@@ -161,6 +168,7 @@ public class IndexController {
     }
 
     @GetMapping("/board/{no}")
+    @Timer
     public String detail(@PathVariable("no") Long no, Model model) {
         BoardDto boardDto = boardService.getBoard(no);
         model.addAttribute("board", boardDto);
@@ -173,6 +181,7 @@ public class IndexController {
     }
 
     @GetMapping("/board/search")
+    @Timer
     public String search(@RequestParam(value = "keyword") String keyword, Model model) {
         List<BoardDto> boardList = boardService.searchPosts(keyword);
         model.addAttribute("boardList", boardList);
