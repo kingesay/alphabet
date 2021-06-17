@@ -87,8 +87,8 @@ public class IndexController {
     @GetMapping("/howtouse")
     public String howtouse() { return "howtouse"; }
 
-    @PostMapping("/post")
     @Timer
+    @PostMapping("/post")
     public String post(@Valid BoardDto boardDto, Errors errors) throws Exception {
         if (errors.hasErrors()) return "redirect:/board";
         String ip = getUserIp();
@@ -105,15 +105,15 @@ public class IndexController {
         return "redirect:/board";
     }
 
-    @DeleteMapping("/post/{no}")
     @Timer
+    @DeleteMapping("/post/{no}")
     public String post(@PathVariable("no") Long no, String pw) {
         boardService.deletePost(no, pw);
         return "redirect:/board";
     }
 
-    @GetMapping("/post/edit/{no}")
     @Timer
+    @GetMapping("/post/edit/{no}")
     public String edit(@PathVariable("no") Long id, Model model, String pw) {
         BoardDto boardDto = boardService.getBoard(id);
         if (!boardDto.getPw().equals(pw)) return "redirect:/board";
@@ -121,8 +121,8 @@ public class IndexController {
         return "update";
     }
 
-    @PutMapping("/post/edit/{no}")
     @Timer
+    @PutMapping("/post/edit/{no}")
     public String update(@Valid BoardDto boardDto, Errors errors) {
         if (errors.hasErrors()) return "redirect:/board";
         boardDto.setVisible(true);
@@ -154,8 +154,8 @@ public class IndexController {
         return "test";
     }
 
-    @GetMapping("/board")
     @Timer
+    @GetMapping("/board")
     public String list(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
         List<BoardDto> boardList = boardService.getBoardList(pageNum);
         ArrayList<Integer> pageList2 = boardService.getPageList(pageNum);
@@ -164,8 +164,8 @@ public class IndexController {
         return "board";
     }
 
-    @GetMapping("/board/{no}")
     @Timer
+    @GetMapping("/board/{no}")
     public String detail(@PathVariable("no") Long no, Model model) {
         BoardDto boardDto = boardService.getBoard(no);
         model.addAttribute("board", boardDto);
@@ -177,8 +177,8 @@ public class IndexController {
         return "boardDetail";
     }
 
-    @GetMapping("/board/search")
     @Timer
+    @GetMapping("/board/search")
     public String search(@RequestParam(value = "keyword") String keyword, Model model) {
         List<BoardDto> boardList = boardService.searchPosts(keyword);
         model.addAttribute("boardList", boardList);
@@ -187,9 +187,9 @@ public class IndexController {
 
     @RestController
     public class apiControl {
+        @Timer
         @RequestMapping(value = "/api/getSVG", method = RequestMethod.GET, produces = "image/svg+xml", params = "stuID")
         @ResponseBody
-        @Timer
         public ResponseEntity<String> getSVG(@RequestParam("stuID") String stuID, Model model) {
             List<PersonDto> personDtos = personService.searchPerson(stuID);
 
