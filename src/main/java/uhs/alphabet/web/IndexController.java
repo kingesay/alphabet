@@ -8,6 +8,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.reactive.result.view.RedirectView;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -87,7 +88,6 @@ public class IndexController {
     @GetMapping("/howtouse")
     public String howtouse() { return "howtouse"; }
 
-    @Timer
     @PostMapping("/post")
     public String post(@Valid BoardDto boardDto, Errors errors) throws Exception {
         if (errors.hasErrors()) return "redirect:/board";
@@ -105,14 +105,12 @@ public class IndexController {
         return "redirect:/board";
     }
 
-    @Timer
     @DeleteMapping("/post/{no}")
     public String post(@PathVariable("no") Long no, String pw) {
         boardService.deletePost(no, pw);
         return "redirect:/board";
     }
 
-    @Timer
     @GetMapping("/post/edit/{no}")
     public String edit(@PathVariable("no") Long id, Model model, String pw) {
         BoardDto boardDto = boardService.getBoard(id);
@@ -121,7 +119,6 @@ public class IndexController {
         return "update";
     }
 
-    @Timer
     @PutMapping("/post/edit/{no}")
     public String update(@Valid BoardDto boardDto, Errors errors) {
         if (errors.hasErrors()) return "redirect:/board";
@@ -154,7 +151,6 @@ public class IndexController {
         return "test";
     }
 
-    @Timer
     @GetMapping("/board")
     public String list(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
         List<BoardDto> boardList = boardService.getBoardList(pageNum);
@@ -164,7 +160,6 @@ public class IndexController {
         return "board";
     }
 
-    @Timer
     @GetMapping("/board/{no}")
     public String detail(@PathVariable("no") Long no, Model model) {
         BoardDto boardDto = boardService.getBoard(no);
@@ -177,7 +172,6 @@ public class IndexController {
         return "boardDetail";
     }
 
-    @Timer
     @GetMapping("/board/search")
     public String search(@RequestParam(value = "keyword") String keyword, Model model) {
         List<BoardDto> boardList = boardService.searchPosts(keyword);
@@ -187,7 +181,6 @@ public class IndexController {
 
     @RestController
     public class apiControl {
-        @Timer
         @RequestMapping(value = "/api/getSVG", method = RequestMethod.GET, produces = "image/svg+xml", params = "stuID")
         @ResponseBody
         public ResponseEntity<String> getSVG(@RequestParam("stuID") String stuID, Model model) {
