@@ -38,7 +38,7 @@ public class IndexControllerTest {
     private LocalDateTime now = LocalDateTime.now();
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private String cur = now.format(formatter);
-    @Test
+//    @Test
     public void updateTest() throws Exception {
         Long no = 1L;
         BoardDto boardDto = BoardDto.builder()
