@@ -4,6 +4,9 @@
         <form class="board_form" action="/post/edit/{{boardDto.board_id}}" method="post">
             <input type="hidden" name="_method" value="put"/>
             <input type="hidden" name="board_id" value="{{boardDto.board_id}}"/>
+            <input type="hidden" name="writer" value="{{boardDto.writer}}"/>
+            <input type="hidden" name="cteated_time" value="{{boardDto.cteated_time}}"/>
+            <input type="hidden" name="modified_time" value="{{boardDto.modified_time}}"/>
             <input type="hidden" name="pw" value="{{boardDto.pw}}">
             <div class="border_1">
                 <input class="board_form_title" type="text" name="title" value="{{boardDto.title}}"/>

@@ -18,6 +18,9 @@ public class RepositoryTest {
     @Autowired
     private PersonRepository personRepository;
 
+    private LocalDateTime now = LocalDateTime.now();
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
     @After
     public void cleanup() {
         personRepository.deleteAll();
@@ -35,8 +38,6 @@ public class RepositoryTest {
     @Test
     @DisplayName("saveBoard test 한번 저장")
     public void saveBoard() {
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         BoardEntity boardEntity = BoardEntity.builder()
                 .title("saveTestTitle")
                 .content("saveTestContent")
@@ -54,7 +55,7 @@ public class RepositoryTest {
                 .ip("ip")
                 .build()
         );
-
+        now = LocalDateTime.now();
         List<BoardEntity> boardEntityWrapper = boardRepository.findByTitleContaining("saveTestTitle");
         BoardEntity boardEntityTest = boardEntityWrapper.get(0);
 
@@ -80,6 +81,7 @@ public class RepositoryTest {
                 .ip("ip1")
                 .build()
         );
+        now = LocalDateTime.now();
         List<BoardEntity> boardEntities = boardRepository.findByTitleContaining("deleteTest");
         int sz = boardEntities.size();
         Assertions.assertEquals(sz, 1);
@@ -108,10 +110,9 @@ public class RepositoryTest {
                 .name("name")
                 .build()
         );
+        now = LocalDateTime.now();
         List<PersonEntity> personEntityWrapper = personRepository.findByStunumContaining("savePerson1234");
         PersonEntity personEntityTest = personEntityWrapper.get(0);
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         Assertions.assertEquals(personEntity.getName(), personEntityTest.getName());
         Assertions.assertEquals(personEntity.getHandle(), personEntityTest.getHandle());

@@ -44,38 +44,6 @@ public class BoardServiceTest {
         boardService.deletePostAll();
     }
 
-    //TODO: private 메소드라 refletion 해서 테스팅하
-    // https://justinchronicles.net/ko/2014/07/14/dont-do-testing-private-methods/
-//    @Test
-//    public void convertEntityToDtoTest() {
-//        boardRepository.save(BoardEntity.builder()
-//                .title("convertTestTitle")
-//                .content("convertTestContent")
-//                .pw("1234")
-//                .visible(true)
-//                .writer("writer")
-//                .ip("ip")
-//                .build()
-//        );
-//        List<BoardEntity> boardEntityList = boardRepository.findByTitleContaining("convertTestTitle");
-//        BoardEntity boardEntity = boardEntityList.get(0);
-//        BoardDto boardDto = BoardDto.builder()
-//                .title("convertTestTitle")
-//                .content("convertTestContent")
-//                .pw("1234")
-//                .writer("writer")
-//                .visible(true)
-//                .ip("ip")
-//                .build();
-//        BoardDto boardDtoTest = boardService.convertEntityToDto(boardEntity);
-//        Assertions.assertEquals(boardDto.getTitle(), boardDtoTest.getTitle());
-//        Assertions.assertEquals(boardDto.getContent(), boardDtoTest.getContent());
-//        Assertions.assertEquals(boardDto.getPw(), boardDtoTest.getPw());
-//        Assertions.assertEquals(boardDto.getWriter(), boardDtoTest.getWriter());
-//        Assertions.assertEquals(boardDto.isVisible(), boardDtoTest.isVisible());
-//        Assertions.assertEquals(boardDto.getIp(), boardDtoTest.getIp());
-//    }
-
     @Test
     public void saveBoardTest() {
         BoardDto boardDto = BoardDto.builder()

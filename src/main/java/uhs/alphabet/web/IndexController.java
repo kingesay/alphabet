@@ -11,6 +11,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import uhs.alphabet.annotation.Timer;
 import uhs.alphabet.domain.dto.BoardDto;
 import uhs.alphabet.domain.dto.PersonDto;
 import uhs.alphabet.domain.service.BoardService;
@@ -87,6 +88,7 @@ public class IndexController {
     public String howtouse() { return "howtouse"; }
 
     @PostMapping("/post")
+    @Timer
     public String post(@Valid BoardDto boardDto, Errors errors) throws Exception {
         if (errors.hasErrors()) return "redirect:/board";
         String ip = getUserIp();
@@ -104,12 +106,14 @@ public class IndexController {
     }
 
     @DeleteMapping("/post/{no}")
+    @Timer
     public String post(@PathVariable("no") Long no, String pw) {
         boardService.deletePost(no, pw);
         return "redirect:/board";
     }
 
     @GetMapping("/post/edit/{no}")
+    @Timer
     public String edit(@PathVariable("no") Long id, Model model, String pw) {
         BoardDto boardDto = boardService.getBoard(id);
         if (!boardDto.getPw().equals(pw)) return "redirect:/board";
@@ -118,6 +122,7 @@ public class IndexController {
     }
 
     @PutMapping("/post/edit/{no}")
+    @Timer
     public String update(@Valid BoardDto boardDto, Errors errors) {
         if (errors.hasErrors()) return "redirect:/board";
         boardDto.setVisible(true);
@@ -150,6 +155,7 @@ public class IndexController {
     }
 
     @GetMapping("/board")
+    @Timer
     public String list(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
         List<BoardDto> boardList = boardService.getBoardList(pageNum);
         ArrayList<Integer> pageList2 = boardService.getPageList(pageNum);
@@ -159,6 +165,7 @@ public class IndexController {
     }
 
     @GetMapping("/board/{no}")
+    @Timer
     public String detail(@PathVariable("no") Long no, Model model) {
         BoardDto boardDto = boardService.getBoard(no);
         model.addAttribute("board", boardDto);
@@ -167,11 +174,11 @@ public class IndexController {
             boardDto.setTitle("가려진 게시물");
             boardDto.setContent("해당 게시글은 가려졌습니다 문제가 있는 경우 관리자에게 문의하세요");
         }
-//        System.out.println(ip);
         return "boardDetail";
     }
 
     @GetMapping("/board/search")
+    @Timer
     public String search(@RequestParam(value = "keyword") String keyword, Model model) {
         List<BoardDto> boardList = boardService.searchPosts(keyword);
         model.addAttribute("boardList", boardList);
@@ -182,8 +189,8 @@ public class IndexController {
     public class apiControl {
         @RequestMapping(value = "/api/getSVG", method = RequestMethod.GET, produces = "image/svg+xml", params = "stuID")
         @ResponseBody
+        @Timer
         public ResponseEntity<String> getSVG(@RequestParam("stuID") String stuID, Model model) {
-            System.out.println(stuID);
             List<PersonDto> personDtos = personService.searchPerson(stuID);
 
             String handle = "None";
@@ -443,16 +450,19 @@ public class IndexController {
             DefaultUriBuilderFactory factory = new DefaultUriBuilderFactory(url);
             WebClient client = WebClient.builder().uriBuilderFactory(factory).build();
             Object trg = client.get().retrieve().bodyToMono(Object.class).block();
-            data = trg.toString();
-            data = data.replaceAll(" ","");
-            StringTokenizer tokens = new StringTokenizer(data, "{}[]=\",");
-            ArrayList<String> strArr = new ArrayList<String>();
             Integer rating = null;
-            while(tokens.hasMoreTokens()) {
-                String tmp = tokens.nextToken();
-                strArr.add(tmp);
+            if (trg != null) {
+                data = trg.toString();
+                data = data.replaceAll(" ","");
+                StringTokenizer tokens = new StringTokenizer(data, "{}[]=\",");
+                ArrayList<String> strArr = new ArrayList<String>();
+                while(tokens.hasMoreTokens()) {
+                    String tmp = tokens.nextToken();
+                    strArr.add(tmp);
+                }
+                rating= Integer.parseInt(strArr.get(8));
             }
-            rating= Integer.parseInt(strArr.get(8));
+            else rating = 300;
 
             if (rating >= 3000) {
                 color = colList.get(7).toString();
