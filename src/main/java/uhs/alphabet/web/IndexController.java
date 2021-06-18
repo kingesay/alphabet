@@ -210,19 +210,7 @@ public class IndexController {
     @RequestMapping(value = "/api/getSVG", method = RequestMethod.GET, produces = "image/svg+xml", params = "stuID")
     @ResponseBody
     public ResponseEntity<String> getSVG(@RequestParam("stuID") String stuID, Model model) {
-        PersonDto personDto = PersonDto.builder()
-                .stunum("20180647")
-                .rating(1700)
-                .name("asd")
-                .id(1L)
-                .handle("asdasd")
-                .build();
-        personDto.setCreated_time(LocalDateTime.now());
-        personDto.setModified_time(LocalDateTime.now());
-        personService.savePerson(personDto);
-
         List<PersonDto> personDtos = personService.searchPerson(stuID);
-
         String handle = "None";
         String name = "None";
         if (!personDtos.isEmpty()) {
