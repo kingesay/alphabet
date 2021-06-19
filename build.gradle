@@ -21,7 +21,18 @@ jacocoTestReport {
     }
 }
 test.finalizedBy jacocoTestReport
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            excludes = [
+                    '*.getSVG',
+                    '*.TimerAop',
+                    '*.apiController'
+            ]
+        }
+    }
 
+}
 repositories {
     mavenCentral()
 }
