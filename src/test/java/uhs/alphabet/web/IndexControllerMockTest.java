@@ -8,9 +8,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
+import org.springframework.http.HttpMethod;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import uhs.alphabet.domain.dto.BoardDto;
+import uhs.alphabet.domain.dto.PersonDto;
 import uhs.alphabet.domain.service.BoardService;
 import uhs.alphabet.domain.service.PersonService;
 
@@ -294,6 +296,51 @@ public class IndexControllerMockTest {
                 .param("created_time", cur)
         )
                 .andExpect(status().is3xxRedirection());
+    }
+
+    @Test
+    public void editTest() throws Exception {
+        BoardDto boardDto = BoardDto.builder()
+                .board_id(1L)
+                .title("test")
+                .content("test")
+                .writer("test")
+                .visible(true)
+                .pw("1234")
+                .created_time(cur)
+                .modified_time(now)
+                .count(1)
+                .build();
+        Long id = 1L;
+        Mockito.when(boardService.getBoard(id)).thenReturn(boardDto);
+        Long no = 1L;
+        String pw = "1234";
+        mockMvc.perform(MockMvcRequestBuilders.get("/post/edit/{no}", no)
+                .param("pw", pw)
+        )
+                .andExpect(status().isOk());
+        mockMvc.perform(MockMvcRequestBuilders.get("/post/edit/{no}", no)
+                .param("pw", "1111")
+        )
+                .andExpect(status().is3xxRedirection());
+    }
+    @Test
+    public void getSVGTest() throws Exception {
+        String stuID = "1234";
+        PersonDto personDto = PersonDto.builder()
+                .id(1L)
+                .handle("test")
+                .name("test")
+                .rating(1700)
+                .stunum(stuID)
+                .build();
+        List<PersonDto> personDtos = new ArrayList<>();
+        personDtos.add(personDto);
+        Mockito.when(personService.searchPerson(stuID)).thenReturn(personDtos);
+        mockMvc.perform(MockMvcRequestBuilders.request(HttpMethod.GET, "/api/getSVG")
+                .param("stuID", stuID)
+        )
+                .andExpect(status().isOk());
     }
 }
 
