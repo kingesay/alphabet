@@ -13,6 +13,8 @@ import org.springframework.web.util.DefaultUriBuilderFactory;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import uhs.alphabet.annotation.Timer;
+import uhs.alphabet.config.auth.LoginUser;
+import uhs.alphabet.config.auth.dto.SessionUser;
 import uhs.alphabet.domain.dto.BoardDto;
 import uhs.alphabet.domain.dto.PersonDto;
 import uhs.alphabet.domain.service.BoardService;
@@ -55,7 +57,8 @@ public class IndexController {
 
     @GetMapping("/")
     @Timer
-    public String index() {
+    public String index(Model model, @LoginUser SessionUser user) {
+        if (user != null) model.addAttribute("userName", user.getName());
         return "index";
     }
 
@@ -109,12 +112,14 @@ public class IndexController {
 
     @PostMapping("/post")
     @Timer
-    public String post(@Valid BoardDto boardDto, Errors errors) throws Exception {
+    public String post(@Valid BoardDto boardDto, @LoginUser SessionUser user, Errors errors) throws Exception {
         if (errors.hasErrors()) return "redirect:/board";
         String ip = getUserIp();
         boardDto.setIp(ip);
         boardDto.setVisible(true);
         ArrayList<String> names = new ArrayList<>();
+        // 로그인하면 본인 계정 이름으로 writer 설정
+//        if (user != null) boardDto.setWriter(user.getName());
         names.add("alphabet");
         names.add("admin");
         names.add("관리자");
