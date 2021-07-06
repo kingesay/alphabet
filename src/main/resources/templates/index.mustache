@@ -21,5 +21,12 @@
             <div id="progress_text"></div>
         </div>
     </div>
+    {{#userName}}
+        Logged in as <span id="user">{{userName}}</span>
+        <a href="/logout" clas="btn btn-info active" role="button">Logout</a>
+    {{/userName}}
+    {{^userName}}
+        <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+    {{/userName}}
 </main>
 {{>layout/footer}}
